@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Введение | var sity;</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Руководство по основам JavaScript.">
+        <link rel="stylesheet" href="style/varsity.css" media="all">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+
+        <!-- Mobile navigation-->
+        <nav id="nav_mobile">
+            <a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+            <a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+            <a id="show_menu">показать меню</a>
+        </nav>  
+        <section id="introduction">
+            <!-- Introduction-->
+            <header id="introduction.introduction">
+                <div id="logointroduction" class="logo">
+                    <a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+                </div>
+                <h1>Введение</h1>
+            </header>
+            <!-- Articles-->
+            <article id="introduction.js">
+                <h2>Что такое JavaScript?</h2>
+                <div>
+                    <p>
+                        Для начала нужно постараться понять, что такое JavaScript и для чего он вообще нужен.
+                    </p>
+                    <p>
+                        <em>JavaScript</em> — это небольшой, лёгкий, объектно-ориентированный, кросс-платформенный скриптовый язык.
+                        Наиболее широкое применение находит в браузерах как язык сценариев для придания интерактивности веб-страницам. 
+                        Он изначально создавался для того, чтобы сделать web-странички «живыми».   
+                    </p>
+                    <p>
+                        Программы на этом языке называются <em>скриптами</em>. Они подключаются напрямую к HTML и, как только загружается 
+                        страничка — тут же выполняются.
+                    </p>
+                    <p>
+                        <strong>Программы на JavaScript — это обычный текст.</strong> Они не требуют компиляции или какой-то другой специальной подготовки.
+                    </p>
+                    <p>
+                        Чтобы читать и выполнять текст на JavaScript, нужна внешняя программа — <em>интерпретатор</em>. В частности, интерпретатор встроен в браузер, 
+                        поэтому он может выполнять скрипты на странице.
+                    </p>
+                    <p>
+                        <strong>Программы на JavaScript можно запускать не только в браузере, но и на сервере, и даже из командной строки.</strong>
+                    </p>
+                </div>
+                <div>
+                    <h3>Почему JavaScript?</h3>
+                    <p>
+                        Когда создавался язык JavaScript, у него изначально было другое название: «LiveScript». 
+                        Но тогда был очень популярен язык Java, и маркетологи решили, что схожее название сделает новый язык более популярным.
+                    </p>
+                    <p>
+                        Планировалось, что JavaScript будет эдаким «младшим братом» Java. Однако история распорядилась по-своему, JavaScript 
+                        сильно вырос, и сейчас это совершенно независимый язык, со своей спецификацией, которая называется ECMAScript, и к Java 
+                        не имеет никакого отношения.
+                    </p>
+                </div>
+            </article>
+            <article id="introduction.whatcando">
+                <h2>Что умеет JavaScript?</h2>
+                <div>                            
+                    <p>
+                        Современный JavaScript — это «безопасный» язык программирования общего назначения.
+                        Он не предоставляет низкоуровневых средств работы с памятью, процессором, так как изначально был 
+                        ориентирован на браузеры, в которых это не требуется.
+                    </p>    
+                    <p>
+                        В браузере JavaScript умеет делать все, что относится к манипуляции со страничкой:
+                    </p>
+                    <ul>
+                        <li>Создавать новые HTML-теги, удалять существующие, менять стили элементов, прятать, показывать элементы и т.п.</li>
+                        <li>Реагировать на действия посетителя, обрабатывать клики мыши, перемещение курсора, нажатие на клавиатуру и т.п. </li>
+                        <li>Посылать запросы на сервер и загружать данные без перезагрузки страницы (это технология называется &quot;AJAX&quot;).</li>
+                        <li>Получать и устанавливать cookie, запрашивать данные, выводить сообщения&#8230;</li>
+                        <li>&#8230;и многое, многое другое!</li>
+                    </ul>
+                </div>
+            </article>
+            <article id="introduction.whatcantdo">
+                <h2>Что НЕ умеет JavaScript?</h2>
+                <div>
+                    <p>
+                        JavaScript — быстрый и мощный язык, но на его исполнение в браузере наложены некоторые ограничения, например, он не умеет 
+                        читать и записывать произвольные файлы на жесткий диск, запускать установку каких-либо программ.
+                    </p>
+                    <p>
+                        Это сделано для безопасности пользователей, чтобы злоумышленник не мог с помощью JavaScript получить личные данные или 
+                        как-то навредить компьютеру пользователя. В браузере Firefox существует способ «подписи» скриптов с целью обхода части 
+                        ограничений, но он нестандартный и не кросс-браузерный.
+                    </p>
+                    <p>
+                        <strong>Большинство возможностей JavaScript ограничено окном браузера и текущей страницей.</strong>
+                    </p>
+                    <ul>
+                        <li>JavaScript не может читать/записывать произвольные файлы на жесткий диск, копировать их или вызывать программы. 
+                            Он не имеет прямого доступа к операционной системе.
+                            <p>Современные браузеры могут работать с файлами, но эта возможность ограничена специально выделенной директорией — <em>песочницей</em>.</p>
+                        </li>
+                        <li>JavaScript, работающий в одной вкладке, не имеет доступа к другой вкладке или окну, за исключением случая, когда он сам открыл это окно.</li>
+                        <li>Из JavaScript можно легко посылать запросы на сервер, с которого пришла страничка.
+                            Запрос на другой домен тоже возможен, но менее удобен, т.к. здесь есть ограничения.</li>
+                    </ul>
+                </div>
+            </article>
+            <article id="introduction.unique">    
+                <h2>В чем уникальность JavaScript?</h2>
+                <div>
+                    <p>
+                        Есть как минимум <em>три</em> замечательных особенности JavaScript:
+                    </p>
+                    <ol>
+                        <li>Полная интеграция с HTML/CSS.</li>
+                        <li>Простые вещи делаются просто.</li>
+                        <li>Поддерживается всеми распространенными браузерами и включен по умолчанию.</li>
+                    </ol>
+                    <p>
+                        <strong>Этих трех вещей одновременно нет больше ни в одной браузерной технологии.</strong> Поэтому JavaScript 
+                        и является самым распространенным средством создания браузерных интерфейсов.
+                    </p>
+                </div>
+            </article>
+            <article id="introduction.first">
+                <h2>Первые шаги</h2>
+                <div>
+                    <p>
+                        А сейчас попробуем  создать первую программу. Обычно, начинающие сначала должны научиться написать программу «Hello, world!», 
+                        которая выводит на экран эту фразу. Можно использовать и другие слова, это абсолютно не принципиально.
+                    </p>   
+                </div>
+                <div>
+                    <h3>Тег <code>SCRIPT</code></h3>
+                    <p>
+                        Программы на языке JavaScript можно вставить в любое место HTML при помощи тега <code>SCRIPT</code>. Например: 
+                    </p>
+                    <pre><code>&lt;!DOCTYPE HTML>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+    &lt;/head>
+    &lt;body>
+        &lt;p>Начало документа...&lt;/p>
+        &lt;script>
+            alert('Hello, world!');
+        &lt;/script>
+        &lt;p>...Конец документа&lt;/p>
+    &lt;/body>
+&lt;/html></code></pre>
+                    <p>
+                        Этот пример использует следующие элементы:
+                    </p>
+                    <p>
+                    <ul><li><code>&lt;script> ... &lt;/script></code></li></ul>
+                    </p>
+                    <p>
+                        Тег <code>script</code> содержит исполняемый код. Предыдущие стандарты HTML требовали обязательного указания атрибута <code>type</code>,
+                        но сейчас он уже не нужен. Достаточно просто <code>&lt;script></code>.
+                    </p>
+                    <p>
+                        Браузер, когда видит <code>&lt;script></code>:
+                    </p>
+                    <ol>
+                        <li>Начинает отображать страницу, показывает часть документа до <code>script</code></li>
+                        <li>Встретив тег <code>script</code>, переключается в JavaScript-режим и не показывает, а исполняет его содержимое.</li>
+                        <li>Закончив выполнение, возвращается обратно в HTML-режим и отображает оставшуюся часть документа.</li>
+                    </ol>
+                    <p>
+                        Попробуйте этот пример в действии, обратите внимание, что <strong>пока браузер не выполнит скрипт — 
+                            он не может отобразить часть страницы после него</strong>.
+                    </p>
+                    <p>
+                    <ul><li><code>alert(...)</code></li></ul>
+                    </p>
+                    <p>
+                        Отображает окно с сообщением и ждет, пока посетитель не нажмет «Ок».
+                    </p> 
+                    <p>                                
+                        Решите задачку, чтобы удостовериться, что вы все правильно поняли.<br/>                                       
+                        Сделайте страницу, которая выводит «Я - JavaScript!».
+                        Создайте файл с расширением html на диске, откройте в браузере, убедитесь, что все работает.
+                    </p>     
+                </div>
+                <div>
+                    <h3>Внешние скрипты</h3>
+                    <p>
+                        <strong>Если JavaScript-кода много — его выносят в отдельный файл, который подключается в HTML:</strong>
+                    </p>
+                    <p>
+                        <code>&lt;script src="/path/to/script.js">&lt;/script></code>
+                    </p>
+                    <p>
+                        Здесь <code>/path/to/script.js</code> — это абсолютный путь к файлу, содержащему скрипт (из корня сайта). Можно указать и полный URL. 
+                        Вы также можете использовать путь относительно текущей страницы, т.е. <code>src="script.js"</code> если скрипт находится в том же каталоге, что и страница.
+                    </p>
+                    <p>
+                        Например:
+                    </p>
+                    <pre><code>&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+        &lt;script src="/files/tutorial/browser/script/rabbits.js">&lt;/script>
+    &lt;/head>
+    &lt;body>
+        &lt;script>
+            count_rabbits();
+        &lt;/script>
+    &lt;/body>
+&lt;/html></code></pre>
+                    <p>
+                        Содержимое файла <code>/files/tutorial/browser/script/rabbits.js</code>:
+                    </p>
+                    <pre><code>function count_rabbits() {
+    for(var i=1; i<=3; i++) {
+        alert("Кролик номер "+i)
+    }
+}</code></pre>
+
+                    <p>
+                        Как правило, в HTML пишут только самые простые скрипты, а сложные выносят в отдельный файл.
+                    </p>
+                    <p>
+                        Одинаковый скрипт, например, меню или библиотека функций, может использоваться на разных страницах. При правильных настройках сервера, 
+                        браузер скачает скрипт только первый раз и в дальнейшем, при правильной настройке сервера, будет брать из своего кеша.
+                    </p>
+                    <p>
+                        <strong>Если указан атрибут src, то содержимое тега игнорируется. Поэтому нельзя подключить внешний скрипт и исполнить 
+                            внутренний в одном теге</strong> <code>SCRIPT</code>.
+                    </p>
+                    <p>
+                        Вот так не cработает:
+                    </p>
+                    <pre><code>&lt;script src="file.js">
+    alert(1); // внутренняя часть скрипта с src игнорируется
+&lt;/script></code></pre>
+                    <p>
+                        Нужно два тега, один — с src, другой с кодом:
+                    </p>
+                    <pre><code>&lt;script src="file.js">&lt;/script>
+&lt;script>
+    alert(1); // внутренняя часть скрипта с src игнорируется
+&lt;/script></code></pre>
+                </div>     
+            </article>
+            <article id="introduction.test">
+                <h2>Тест</h2>
+                <div>                            
+                    <p>
+                        Попробуйте пройти тест, чтобы проверить, насколько хорошо вы усвоили информацию, изложенную в данном разделе.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 5 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript" >
+                        var res = "41312";
+                    </script>
+
+                    <form name="test"><ol>
+                            <li><INPUT readonly="readonly" type="text" size="1" name="T1"/><strong> Программы на JavaScript требуют:</strong><br/>
+                                <input type="radio" name="Q1"/> компиляции<br />
+                                <input type="radio" name="Q1"/> установки .NET Framework<br />
+                                <input type="radio" name="Q1"/> установки Java<br />
+                                <input type="radio" name="Q1"/> ничего<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T2"/><strong> Ближайшим родственником JS является:</strong><br/>
+                                <input type="radio" name="Q2"/> ECMAScript<br />
+                                <input type="radio" name="Q2"/> Java<br />
+                                <input type="radio" name="Q2"/> C#<br />
+                                <input type="radio" name="Q2"/> HTML<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T3"/><strong> JavaScript выполняемый в браузере не может:</strong><br/>
+                                <input type="radio" name="Q3"/> Посылать данные на сервер<br />
+                                <input type="radio" name="Q3"/> Получать и устанавливать cookie<br />
+                                <input type="radio" name="Q3"/> Работать с процессором<br />
+                                <input type="radio" name="Q3"/> Менять стили элементов<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T4"/><strong> Какой тег содержит исполняемый код?</strong><br/>
+                                <input type="radio" name="Q4"/> script<br />
+                                <input type="radio" name="Q4"/> head<br />
+                                <input type="radio" name="Q4"/> source<br />
+                                <input type="radio" name="Q4"/> code<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T5"/><strong> Когда браузер видит тег script, он:</strong><br/>
+                                <input type="radio" name="Q5"/> Выполняет и показывает его содержание<br />
+                                <input type="radio" name="Q5"/> Не показывает, а исполняет его содержимое<br />
+                                <input type="radio" name="Q5"/> Перезагружает страницу и исполняет его содержание<br />
+                                <input type="radio" name="Q5"/> Выдает запрос на выполнение его содержания<br />
+                                </li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                               
+                        </div>
+            </article>
+        </section>
+       	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2013
+		</p>
+	</footer>
+    <script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>

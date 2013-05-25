@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Тестирование | var sity;</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Руководство по основам JavaScript.">
+        <link rel="stylesheet" href="style/varsity.css" media="all">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+
+        <!-- Mobile navigation-->
+        <nav id="nav_mobile">
+            <a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+            <a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+            <a id="show_menu">показать меню</a>
+        </nav>
+        <section id="test">
+            <!-- Introduction-->
+
+            <header id="test.intro">
+                <div id="logotest" class="logo">
+                    <a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+                </div> 
+                <h1>Тестирование</h1>
+            </header>
+            <!-- Articles-->
+            <article id="test.intro">
+                <div>
+                    <p>
+                        В данном разделе находятся тестовые задания по всем разделам данного электронного издания. 
+                        Пройдя их, можно узнать, насколько хорошо вы усвоили изложенный материал и определить, какие темы нужно дополнительно повторить.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 20 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>                       
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript">
+                        var res20 = "32431342132421344212";
+                    </script>
+
+                    <form name="test20"><ol>
+                            <li><INPUT type="text" size="1" name="T1"/><strong> Как создать функцию?</strong><br/>
+                                <input type="radio" name="Q1"/> new function myfunction()<br />
+                                <input type="radio" name="Q1"/> function=myfunction()<br />
+                                <input type="radio" name="Q1"/> function myfunction()<br />
+                                <input type="radio" name="Q1"/> function:myfunction()<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T2"/><strong> Сколько существует примитивных типов данных?</strong><br/>
+                                <input type="radio" name="Q2"/> 7<br />
+                                <input type="radio" name="Q2"/> 5<br />
+                                <input type="radio" name="Q2"/> 4<br />
+                                <input type="radio" name="Q2"/> 3<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T3"/><strong> Какой метод используется для задания 4х-значного года?</strong><br/>
+                                <input type="radio" name="Q3"/> setYear()<br />
+                                <input type="radio" name="Q3"/> setonlyyear()<br />
+                                <input type="radio" name="Q3"/> setwholeyear()<br />
+                                <input type="radio" name="Q3"/> setfullyear()<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T4"/><strong> JavaScript, выполняемый в браузере, не может:</strong><br/>
+                                <input type="radio" name="Q4"/> Получать и устанавливать cookie<br />
+                                <input type="radio" name="Q4"/> Посылать данные на сервер<br />
+                                <input type="radio" name="Q4"/> Работать с процессором<br />
+                                <input type="radio" name="Q4"/> Менять стили элементов<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T5"/><strong> alert((13 << 1 % 5) *= 4</strong><br/>
+                                <input type="radio" name="Q5"/> 4<br />
+                                <input type="radio" name="Q5"/> 5<br />
+                                <input type="radio" name="Q5"/> 16<br />
+                                <input type="radio" name="Q5"/> 26<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T6"/><strong> alert(5/0)</strong><br/>
+                                <input type="radio" name="Q6"/> 0<br />
+                                <input type="radio" name="Q6"/> Error<br />
+                                <input type="radio" name="Q6"/> Infinity<br />
+                                <input type="radio" name="Q6"/> NaN<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T7"/><strong> В какой кодировке находятся строки внутри JavaScript-интерпретатора?</strong><br/>
+                                <input type="radio" name="Q7"/> ASCII<br />
+                                <input type="radio" name="Q7"/> ISCII<br />
+                                <input type="radio" name="Q7"/> MS-Windows<br />
+                                <input type="radio" name="Q7"/> Unicode<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T8"/><strong> Каким образом задается свойство объекта myobj?</strong><br/>
+                                <input type="radio" name="Q8"/> property myobj x<br />
+                                <input type="radio" name="Q8"/> myobj.x<br />
+                                <input type="radio" name="Q8"/> myobj property x<br />
+                                <input type="radio" name="Q8"/> var x propertyOf myobj<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T9"/><strong> Когда браузер видит тег script, он:</strong><br/>
+                                <input type="radio" name="Q9"/> Не показывает, а исполняет его содержимое<br />
+                                <input type="radio" name="Q9"/> Выполняет и показывает его содержание<br />
+                                <input type="radio" name="Q9"/> Перезагружает страницу и исполняет его содержание<br />
+                                <input type="radio" name="Q9"/> Выдает запрос на выполнение его содержания<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T10"/><strong> Какое выражение верно:</strong><br/>
+                                <input type="radio" name="Q10"/> For i = 1 to 5<br />
+                                <input type="radio" name="Q10"/> For (i <= 5; i++)<br />
+                                <input type="radio" name="Q10"/> For (i = 0; i <= 5; i++)<br />
+                                <input type="radio" name="Q10"/> For (i = 0; i <= 5)<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T11"/><strong> Как превратить информацию, состоящую из значений разделенных запятыми, в массив?</strong><br/>
+                                <input type="radio" name="Q11"/> txtArray = txt.indexOf(\',\');<br />
+                                <input type="radio" name="Q11"/> txtArray = txt.split(\',\');<br />
+                                <input type="radio" name="Q11"/> txtArray = txt.trim(\',\');<br />
+                                <input type="radio" name="Q11"/> txtArray = txt.substring(\',\');<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T12"/><strong> Программы на JavaScript требуют:</strong><br/>
+                                <input type="radio" name="Q12"/> компиляции<br />
+                                <input type="radio" name="Q12"/> установки .NET Framework<br />
+                                <input type="radio" name="Q12"/> установки Java<br />
+                                <input type="radio" name="Q12"/> ничего<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T13"/><strong> Что такое ===?</strong><br/>
+                                <input type="radio" name="Q13"/> Оператор равенства<br />
+                                <input type="radio" name="Q13"/> Оператор строгого равенства<br />
+                                <input type="radio" name="Q13"/> Оператор присвоения<br />
+                                <input type="radio" name="Q13"/> Оператор присвоения в случае неравенства<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T14"/><strong> Каким форматом представлены числа JS в памяти?</strong><br/>
+                                <input type="radio" name="Q14"/> Double precision<br />
+                                <input type="radio" name="Q14"/> Double<br />
+                                <input type="radio" name="Q14"/> 4 bit<br />
+                                <input type="radio" name="Q14"/> 6 bit<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T15"/><strong> Метод - это объектно-ориентированная версия:</strong><br/>
+                                <input type="radio" name="Q15"/> Переменной<br />
+                                <input type="radio" name="Q15"/> Массива<br />
+                                <input type="radio" name="Q15"/> Функции<br />
+                                <input type="radio" name="Q15"/> Программы<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T16"/><strong> Имя переменной может состоять из:</strong><br/>
+                                <input type="radio" name="Q16"/> Букв и цифр<br />
+                                <input type="radio" name="Q16"/> Букв, цифр и символов $, %, &, !<br />
+                                <input type="radio" name="Q16"/> Только букв<br />
+                                <input type="radio" name="Q16"/> Букв, цифр и символов $, _<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T17"/><strong> Сколько раз выполнится цикл var i = 0; while i < 4 { alert(i) i--; }?</strong><br/>
+                                <input type="radio" name="Q17"/> 0<br />
+                                <input type="radio" name="Q17"/> 4<br />
+                                <input type="radio" name="Q17"/> 5<br />
+                                <input type="radio" name="Q17"/> Бесконечность<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T18"/><strong> var h = 1; function test() { h = 10; } alert(h);</strong><br/>
+                                <input type="radio" name="Q18"/> 10<br />
+                                <input type="radio" name="Q18"/> 1<br />
+                                <input type="radio" name="Q18"/> 0<br />
+                                <input type="radio" name="Q18"/> Error<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T19"/><strong> var str = ‘раз два три четыре пять’ alert(str.indexOf(“шесть”)</strong><br/>
+                                <input type="radio" name="Q19"/> -1<br />
+                                <input type="radio" name="Q19"/> Пустое сообщение<br />
+                                <input type="radio" name="Q19"/> Null<br />
+                                <input type="radio" name="Q19"/> 0<br />
+                                <br/></li><li><INPUT type="text" size="1" name="T20"/><strong> Как правильно описать массив?</strong><br/>
+                                <input type="radio" name="Q20"/> var txt = new Array(1:\"tim\",2:\"kim\",3:\"jim\")<br />
+                                <input type="radio" name="Q20"/> var txt = new Array(\"tim\",\"kim\",\"jim\")<br />
+                                <input type="radio" name="Q20"/> var txt = new Array=\"tim\",\"kim\",\"jim\"<br />
+                                <input type="radio" name="Q20"/> var txt = new Array:1=(\"tim\")2=(\"kim\")3=(\"jim\")<br />
+                                <br/></li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me20();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                
+        </div>
+            </article>
+            </section>
+       	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2013
+		</p>
+	</footer>
+    <script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>

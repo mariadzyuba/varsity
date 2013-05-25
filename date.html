@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Дата и время | var sity;</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Руководство по основам JavaScript.">
+        <link rel="stylesheet" href="style/varsity.css" media="all">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+
+        <!-- Mobile navigation-->
+        <nav id="nav_mobile">
+            <a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+            <a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+            <a id="show_menu">показать меню</a>
+        </nav>
+        <section id="date">
+            <!-- Introduction-->
+            <header id="date.intro">
+                <div id="logodate" class="logo">
+                    <a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+                </div>
+                <h1>Дата и время</h1>
+            </header>
+            <!-- Articles-->
+            <article id="date.create">
+                <div>
+                    <h2>Создание</h2>
+                    <p>
+                        Для работы с датой и временем в JavaScript используются объекты <code>Date</code>.
+                    </p>
+                    <p>
+                        Для создания нового объекта типа <code>Date</code> используется один из синтаксисов:
+                    </p>
+                    <p>
+                        <code>new Date()</code><br/>
+                        Создает объект <code>Date</code> с текущей датой и временем:
+                    </p>
+                    <pre><code>var now = new Date();
+alert(now);</code></pre>
+                    <p>
+                        <code>new Date(milliseconds)</code><br/>
+                        Создает объект <code>Date</code>, значение которого равно количеству миллисекунд (1/1000 секунды), 
+                        прошедших с 1 января 1970 года GMT+0.
+                    </p>
+                    <pre><code>// 24 часа после 01.01.1970 GMT+0
+var Jan02_1970 = new Date(3600*24*1000);
+alert( Jan02_1970 );</code></pre>
+                    <p>
+                        <code>new Date(datestring)</code><br/>
+                        Если единственный аргумент — строка, используется вызов <code>Date.parse</code> для ее разбора.
+                    </p>
+                    <p>
+                        <code>new Date(year, month [, day, hours, minutes, seconds, ms])</code><br/>
+                        Дату можно создать, используя компоненты в местной временной зоне. Для этого формата обязательны только 
+                        первые два аргумента. Отсутствующие параметры считаются равными нулю.<br/>
+                        <strong>Заметим, что год <code>year</code> должен быть из 4 цифр, а отсчет месяцев <code>month</code> начинается 
+                            с нуля 0.</strong> Например:
+                    </p>
+                    <pre><code>new Date(2011, 0, 1) // 1 января 2011, 00:00:00 в местной временной зоне</code></pre>
+                    <p>
+                        С максимально возможной точностью, до миллисекунд:
+                    </p>
+                    <pre><code>var d = new Date(2011, 0, 1, 2, 3, 4, 567); // 1.01.2011, 02:03:04.567 
+alert(d);</code></pre>
+                </div>
+            </article>
+            <article id="date.get">
+                <div>
+                    <h2>Получение компонент даты</h2>
+                    <p>
+                        Для доступа к компонентам даты-времени объекта <code>Date</code> используются следующие методы:
+                    </p>
+                    <p>
+                        <code>getFullYear()</code><br/>
+                        Получить год(из 4 цифр)
+                    </p>
+                    <p>
+                        <code>getMonth()</code><br/>
+                        Получить месяц, <strong>от 0 до 11</strong>
+                    </p>
+                    <p>
+                        <code>getDate()</code><br/>
+                        Получить число месяца, от 1 до 31.
+                    </p>
+                    <p>
+                        <code>getHours(), getMinutes(), getSeconds(), getMilliseconds()</code><br/>
+                        Получить соответствующие компоненты.
+                    </p>
+                    <p>
+                        Дополнительно можно получить день недели:
+                    </p>
+                    <p>
+                        <code>getDay()</code><br/>
+                        Получить номер дня в неделе. Неделя в JavaScript начинается с воскресенья, так что результат будет
+                        числом от 0(воскресенье) до 6(суббота).
+                    </p>
+                    <p>
+                        <strong>Все методы, указанные выше, возвращают результат для местной временной зоны.</strong>
+                    </p>
+                    <p>
+                        Существуют также UTC-варианты этих методов, возвращающие день, месяц, год и т.п. для зоны GMT+0 (UTC):
+                        <code>getUTCFullYear()</code>, <code>getUTCMonth()</code>, <code>getUTCDay()</code>. То есть, сразу после
+                        <code>"get"</code> вставляется <code>"UTC"</code>.
+                    </p>
+                    <p>
+                        Если ваше локальное время сдвинуто относительно UTC, то следующий код покажет разные часы:
+                    </p>
+                    <pre><code>var date = new Date();
+
+alert( date.getHours() ); // час в вашей зоне для даты date
+alert( date.getUTCHours() ); // час в зоне GMT+0 для даты date</code></pre>
+                    <p>
+                        Кроме описанных выше, существует два специальных метода без UTC-варианта:
+                    </p>
+                    <p>
+                        <code>getTime()</code><br/>
+                        Возвращает число миллисекунд, прошедших с 01.01.1970 00:00:00 UTC. Это то же число, которое используется в
+                        конструкторе <code>new Date(milliseconds)</code>.
+                    </p>
+                    <p>
+                        <code>getTimezoneOffset()</code><br/>
+                        Возвращает разницу между местным и UTC-временем, в минутах.
+                    </p>
+                    <pre><code>alert( new Date().getTimezoneOffset() );  // Для GMT-1 выведет 60</code></pre>
+                </div>
+            </article>
+            <article id="date.set">
+                <div>
+                    <h2>Установка компонент даты</h2>
+                    <p>
+                        Следующие методы позволяют устанавливать компоненты даты и времени:
+                    </p>
+                    <ul>
+                        <li><code>setFullYear(year [, month, date])</code></li>
+                        <li><code>setMonth(month [, date])</code></li>
+                        <li><code>setDate(date)</code></li>
+                        <li><code>setHours(hour [, min, sec, ms])</code></li>
+                        <li><code>setMinutes(min [, sec, ms])</code></li>
+                        <li><code>setSeconds(sec [, ms])</code></li>
+                        <li><code>setMilliseconds(ms)</code></li>
+                        <li><code>setTime(milliseconds)</code> (устанавливает всю дату)</li>
+                    </ul>
+                    <p>
+                        Все они, кроме <code>setTime()</code>, обладают также UTC-вариантом, например: <code>setUTCHours()</code>.
+                    </p>
+                </div>
+                <div>
+                    <h3>Автоисправление даты</h3>
+                    <p>
+                        <em>Автоисправление</em> — очень удобное свойство объектов <code>Date</code>. Оно заключается в том, что можно 
+                        устанавливать заведомо некорректные компоненты (например 32 января), а объект сам себя поправит.
+                    </p>
+                    <pre><code>var d = new Date(2012, 0, 32); // 32 января 2012
+alert(d); // 1 февраля 2012</code></pre>
+                    <p>
+                        <strong>Неправильные компоненты даты автоматически распределяются по остальным.</strong>
+                    </p>
+                    <p>
+                        Например, нужно увеличить на 2 дня дату &laquo;28 февраля 2011&raquo;. Может быть так, что это будет 2 марта, а может 
+                        быть и 1 марта, если год високосный. Но нам обо всем этом думать не нужно. Просто прибавляем два дня. Остальное сделает 
+                        <code>Date</code>:
+                    </p>
+                    <pre><code>var d = new Date(2011, 1, 28);
+d.setDate( d.getDate() + 2 );
+
+alert(d); // 2 марта, 2011</code></pre>
+                    <p>
+                        Также это используют для получения даты, отдаленной от имеющейся на нужный промежуток времени. Например, получим дату на 70 
+                        секунд большую текущей:
+                    </p>
+                    <pre><code>var d = new Date();
+d.setSeconds( d.getSeconds()+70);
+
+alert(d); // выведет корректную дату</code></pre>
+                </div>
+                <div>
+                    <h3>Преобразование к числу, разность дат</h3>
+                    <p>
+                        Когда объект <code>Date</code> используется в числовом контексте, он преобразуется в количество миллисекунд:
+                    </p>
+                    <pre><code>alert( +new Date ) // +date то же самое, что: +date.valueOf()</code></pre>
+                    <p>
+                        Важный побочный эффект: <strong>даты можно вычитать, результат вычитания объектов <code>Date</code> &#8212; их 
+                            временная разница, в миллисекундах</strong>.
+                    </p>
+                    <p>
+                        Это используют для измерения времени и профилирования:
+                    </p>
+                    <pre><code>var start = new Date; // засекли время
+
+for (var i=0; i&lt;100000; i++) {
+  var doSomething = i*i*i; 
+}
+
+var end = new Date; // конец измерения
+
+alert("Цикл занял " + (end-start) + " ms");</code></pre>
+                </div>
+                <div>
+                    <h3>Бенчмаркинг</h3>
+                    <p>
+                        Допустим, у нас есть несколько вариантов решения задачи, каждый описан функцией.
+                    </p>
+                    <p>
+                        Как узнать, какой быстрее?
+                    </p>
+                    <p>
+                        Для примера возьмем две функции, которые округляют число:
+                    </p>
+                    <pre><code>function floorMath(x) {
+  return Math.floor(x);
+}
+
+function floorXor(x) {
+  return x^0; // побитовое исключающее ИЛИ (XOR) всегда округляет число
+}</code></pre>
+                    <p>
+                        Чтобы померять, какая из них быстрее, нельзя запустить один раз <code>floorMath</code>, один раз <code>floorXor</code> 
+                        и замерить разницу. Одноразовый запуск ненадежен, любая мини-помеха исказит результат.
+                    </p>
+                    <p>
+                        Для правильного бенчмаркинга функция запускается много раз, чтобы сам тест занял существенное время. Это сведет влияние 
+                        помех к минимуму. Сложную функцию можно запускать 100 раз, простую &#8212; 1000 раз.
+                    </p>
+                    <p>
+                        Померяем, какая из функций округления быстрее:
+                    </p>
+                    <pre><code>function floorMath(x) { return Math.floor(x); }
+function floorXor(x) { return x^0; }
+
+function bench(f) {
+  var d = new Date();
+  for (var i=0.5; i&lt;1000000; i++) f(i);
+  return new Date() - d;
+}
+
+alert('Время floorMath: ' + bench(floorMath) + 'мс');
+alert('Время floorXor: ' + bench(floorXor) + 'мс');</code></pre>
+                    <p>
+                        Как правило, вторая быстрее.
+                    </p>
+                    <p>
+                        <strong>Многократное повторение функции — это очень важный общий подход для тестов.</strong> Еще более точные результаты можно 
+                        получить, если сам пакет тестов, т.е два теста в данном случае, тоже прогоняется много раз.
+                    </p>
+                </div>
+            </article>
+            <article id="date.format">
+                <div>
+                    <h2>Форматирование</h2>
+                    <p>
+                        <strong>Встроенные в <code>Date</code> методы форматирования используются редко, и преимущественно, для отладки.</strong>
+                    </p>
+                    <p>
+                        <code>toString()</code>, <code>toDateString()</code>, <code>toTimeString()</code><br/>
+                        Возвращают стандартное строчное представление, не указанное в стандарте, а зависящее от браузера. Единственное требование — 
+                        читаемость человеком. Метод <code>toString</code> возвращает дату целиком, <code>toDateString()</code> и <code>toTimeString()</code> — 
+                        только дату и время соответственно.
+                    </p>
+                    <pre><code>var d = new Date();
+
+alert( d.toString() ); // вывод, похожий на 'Wed Apr 25 2012 16:40:50 GMT+0300'</code></pre>
+                    <p>
+                        <code>toLocaleString()</code>, <code>toLocaleDateString()</code>, <code>toLocaleTimeString()</code><br/>
+                        То же самое, но строка должна быть с учетом локальных настроек и языка посетителя.
+                    </p>
+                    <pre><code>var d = new Date();
+
+alert( d.toLocaleString() ); // дата на языке посетителя</code></pre>
+                    <p>
+                        <code>toUTCString()</code><br/>
+                        То же самое, что <code>toString()</code>, но дата в зоне UTC.
+                    </p>
+                    <p>
+                        <code>toISOString()</code><br/>
+                        Возвращает дату в формате ISO Детали формата будут далее. Поддерживается современными браузерами, не
+                        поддерживается IE&lt;9.
+                    </p>
+                    <pre><code>var d = new Date();
+
+alert( d.toISOString() ); // вывод, похожий на '2012-02-25T13:51:50.417Z'</code></pre>
+                    <p>
+                        <strong>Встроенные методы форматирования <code>Date</code> не допускают указание собственного формата.</strong>
+                    </p>
+                    <p>
+                        Поэтому, как правило, любой вывод кроме отладочного форматируется самостоятельно.
+                    </p>
+                </div>
+                <div>
+                    <h3>Разбор строки, <code>Date.parse</code></h3>
+                    <p>
+                        Все современные браузеры, включая IE9+, понимают даты в упрощенном формате ISO 8601 Extended.
+                    </p>
+                    <p>
+                        Этот формат выглядит так: <code>YYYY-MM-DDTHH:mm:ss.sssZ</code>. Для разделения даты и времени в нем используется 
+                        символ <code>'T'</code>. Часть &#8216;Z&#8217; обозначает (необязательную) временную зону.
+                    </p>
+                    <p>
+                        Также возможны упрощенные варианты:
+                    </p>
+                    <pre><code>YYYY 
+YYYY-MM 
+YYYY-MM-DD
+THH:mm   // например: 'T12:00'
+THH:mm:ss 
+THH:mm:ss.sss</code></pre>
+                    <p>
+                        Метод <code>Date.parse(str)</code> разбирает строку <code>str</code> в таком формате и возвращает соответствующее 
+                        ей количество миллисекунд. Если это невозможно, <code>Date.parse</code> возвращает <code>NaN</code>.
+                    </p>
+                    <p>
+                        Следующий пример работает во всех современных браузерах.
+                    </p>
+                    <pre><code>var ms = Date.parse('2012-01-26T13:51:50.417');
+
+alert(ms); // 1327571510417 (число миллисекунд)
+alert(new Date(ms)); // создали дату из миллисекунд</code></pre>
+                    <p>
+                        До появления спецификации EcmaScript 5 формат не был стандартизован, и браузеры, включая IE&lt;9, имели свои собственные 
+                        форматы дат. Частично, эти форматы пересекаются.
+                    </p>
+                    <p>
+                        Например, код ниже работает везде, включая старые IE:
+                    </p>
+                    <pre><code>var ms = Date.parse("January 26, 2011 13:51:50");
+
+alert(ms);</code></pre>
+                </div>                 
+            </article>
+            <article id="date.test">
+                <h2>Тест</h2>
+                <div>                            
+                    <p>
+                        Попробуйте пройти тест, чтобы проверить, насколько хорошо вы усвоили информацию, изложенную в данном разделе.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 5 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript" >
+                        var res = "11111";
+                    </script>
+
+                    <form name="test"><ol>
+                            <li><INPUT readonly="readonly" type="text" size="1" name="T1"/><strong> Какой метод используется для задания 4х-значного года?</strong><br/>
+                                <input type="radio" name="Q1"/> <code> setYear()</code><br />
+                                <input type="radio" name="Q1"/> <code> setfullyear()</code><br />
+                                <input type="radio" name="Q1"/> <code> setwholeyear()</code><br />
+                                <input type="radio" name="Q1"/> <code> setonlyyear()</code><br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T2"/><strong> Q2</strong><br/>
+                                <input type="radio" name="Q2"/> Функции<br />
+                                <input type="radio" name="Q2"/> Переменной<br />
+                                <input type="radio" name="Q2"/> Массива<br />
+                                <input type="radio" name="Q2"/> Программы<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T3"/><strong> Q3</strong><br/>
+                                <input type="radio" name="Q3"/> <code>property myobj x</code><br />
+                                <input type="radio" name="Q3"/> <code>myobj.x</code><br />
+                                <input type="radio" name="Q3"/> <code>myobj property x</code><br />
+                                <input type="radio" name="Q3"/> <code>var x propertyOf myobj</code><br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T4"/><strong> Q4</strong><br/>
+                                <input type="radio" name="Q4"/> ISCII<br />
+                                <input type="radio" name="Q4"/> Unicode<br />
+                                <input type="radio" name="Q4"/> ASCII <br />
+                                <input type="radio" name="Q4"/> MS-Windows<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T5"/><strong> Q5</strong><br/>
+                                <input type="radio" name="Q5"/> <code> txt.indexOf('X');</code><br />
+                                <input type="radio" name="Q5"/> <code> txt.find('X');</code><br />
+                                <input type="radio" name="Q5"/> <code> txt.locate('X');</code><br />
+                                <input type="radio" name="Q5"/> <code> txt.countTo('X');</code><br />
+                            </li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                               
+                        </div>
+            </article>
+        </section>
+       	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2013
+		</p>
+	</footer>
+	<script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Числа | var sity;</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Руководство по основам JavaScript.">
+        <link rel="stylesheet" href="style/varsity.css" media="all">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+
+        <!-- Mobile navigation-->
+        <nav id="nav_mobile">
+            <a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+            <a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+            <a id="show_menu">показать меню</a>
+        </nav>
+        <section id="numbers">
+            <!-- Introduction-->
+
+            <header id="numbers.intro">
+                <div id="logonumbers" class="logo">
+                    <a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+                </div> 
+                <h1>Числа</h1>
+            </header>
+            <!-- Articles-->
+            <article id="numbers.waystowrite">
+                <h2>Способы записи</h2>
+                <div>
+                    <p>
+                        Все числа в JavaScript, как целые так и дробные, имеют тип <code>Number</code>
+                    </p>
+                    <p>
+                        В памяти числа представлены 8-байтовым форматом <a href="http://en.wikipedia.org/wiki/IEEE_754-1985">IEEE 754</a>, 
+                        также известным как  &laquo;double precision&raquo;. Максимальное целое значение составляет около <code>2^53</code>.
+                    </p>
+                    <p>
+                        В JavaScript можно записывать числа не только в десятичной, но и в шестнадцатеричной (начинается с <code>0x</code>), 
+                        а также восьмиричной (начинается с <code>0</code>) системах счисления:
+                    </p>
+                    <pre><code>alert( 0xFF ); // 255 в шестнадцатиричной системе
+alert( 010 ); // 8 в восьмиричной системе</code></pre>
+                    <p>
+                        Также доступна запись в <em>научном формате</em>, который выглядит как <code>&lt;число&gt;e&lt;кол-во нулей&gt;</code>.
+                    </p>
+                    <p>
+                        Например, <code>1e3</code> это 1 с 3 нулями, то есть <code>1000</code>.
+                    </p>
+                    <pre><code>// научная форма: 3 с 5 нулями
+alert( 3e5 );  // 300000</code></pre>
+                    <p>
+                        Если количество нулей отрицательно, то число сдвигается вправо за десятичную точку:
+                    </p>
+                    <pre><code>// сдвинуто 5 раз за десятичную точку.
+alert( 3e-5 ); // 0.00003  &lt;-- 5 нулей, включая начальный ноль</code></pre>
+                </div>
+            </article>
+            <article id="numbers.infinity">
+                <div>
+                    <h2>Деление на ноль, <code>Infinity</code></h2>
+                    <p>
+                        Представьте, что вы собираетесь создать новый язык&#8230; Люди будут называть его &laquo;JavaScript&raquo; 
+                        (или LiveScript.. неважно).
+                    </p>
+                    <p>
+                        Что должно происходить при попытке деления на ноль?
+                    </p>
+                    <p>
+                        Как правило, ошибке в программе&#8230; Во всяком случае, в большинстве языков программирования это именно так.
+                    </p>
+                    <p>
+                        Но создатель JavaScript решил пойти математически правильным путем. В математике, при делении на ноль, ошибки 
+                        не происходит. В качестве результата мы получаем бесконечность, <code>Infinity</code>. Если число отрицательное, 
+                        то минус бесконечность <code>-Infinity</code>.
+                    </p>
+                    <p>
+                        Так же и в JavaScript:
+                    </p>
+                    <pre><code>alert(1/0);  // Infinity
+alert(-1/0); // -Infinity</code></pre>
+                    <p>
+                        <code>Infinity</code> — особенное численное значение, которое ведет себя в точности как математическая бесконечность. 
+                        Оно больше любого числа. Добавление к бесконечности не меняет ее:
+                    </p>
+                    <pre><code>alert(Infinity &gt; 999999999999999999999999999); // true
+alert(Infinity + 5 == Infinity);  // true</code></pre>
+                    <p>
+                        Бесконечность можно присвоить и в явном виде: <code>var x = Infinity</code>.
+                    </p>
+                </div>
+            </article>
+            <article id="numbers.NaN">
+                <div>
+                    <h2><code>NaN</code></h2>
+                    <p>
+                        Если математическая операция не может быть совершена, то возвращается специальное значение <code>NaN</code> 
+                        (Not-A-Number).
+                    </p>
+                    <p>
+                        Например, деление <code>0/0</code> в математическом смысле неопределено, поэтому возвращает <code>NaN</code>:
+                    </p>
+                    <pre><code>alert( 0 / 0 );  // NaN</code></pre>
+                    <p>
+                        Значение <code>NaN</code> обозначает математическую ошибку и обладает следующими свойствами:
+                    </p>
+                    <ul>
+                        <li>Значение <code>NaN</code> &#8212; единственное, в своем роде, которое <em>не равно ничему, включая себя</em>.<br/>
+                            Следующий код ничего не выведет:
+                            <pre><code>if (NaN == NaN) alert("=="); // Ни один вызов
+if (NaN === NaN) alert("==="); // не сработает</code></pre>
+                        </li>
+                        <li>Значение <code>NaN</code> можно проверить специальной функцией <code>isNaN(n)</code>, которая возвращает 
+                            <code>true</code> если аргумент &#8212; <code>NaN</code> и <code>false</code> для любого другого значения.
+                            <pre><code>var n = 0/0;
+
+alert( isNaN(n) ); // true</code></pre>
+                        </li>
+                        <li>Значение <code>NaN</code> &laquo;прилипчиво&raquo;. Любая операция с <code>NaN</code> возвращает <code>NaN</code>.
+                            <pre><code>alert( NaN + 1 ); // NaN</code></pre>
+                        </li>
+                    </ul>
+                    <p>
+                        Если аргумент <code>isNaN</code> &#8212; не число, то он автоматически преобразуется к числу.
+                    </p>
+                    <aside>
+                        <p>
+                            Никакие математические операции в JavaScript не могут привести к ошибке или &laquo;обрушить&raquo; программу.<br/>
+                            В худшем случае, результат будет <code>NaN</code>.
+                        </p>
+                    </aside>
+                </div>
+            </article>
+            <article id="numbers.isFinite">
+                <div>
+                    <h2><code>isFinite(n)</code></h2>
+                    <p>
+                        <strong>Итак, в JavaScript есть обычные числа и три специальных числовых значения: <code>NaN</code>, <code>Infinity</code> 
+                            и <code>-Infinity</code>.</strong>
+                    </p>
+                    <p>
+                        Функция <code>isFinite(n)</code> возвращает <code>true</code> только тогда, когда <code>n</code> &#8212; обычное число, а 
+                        не одно из этих значений:
+                    </p>
+                    <pre><code>alert( isFinite(1) ); // true
+alert( isFinite(Infinity) ); // false
+alert( isFinite(NaN) ); // false</code></pre>
+                    <p>
+                        Если аргумент <code>isFinite</code> &#8212; не число, то он автоматически преобразуется к числу.
+                    </p>
+                </div>
+            </article>
+            <article id="numbers.tonumber">
+                <div>
+                    <h2>Преобразование к числу</h2>
+                    <p>
+                        <strong>Строгое преобразование можно осуществить унарным плюсом <code>'+'.</code></strong>
+                    </p>
+                    <pre><code>var s = "12.34"; 
+alert( +s );  // 12.34</code></pre>
+                    <p>
+                        <em>Строгое</em> — означает, что если строка не является в точности числом, то результат будет <code>NaN</code>:
+                    </p>
+                    <pre><code>alert( +"12test" );  // NaN</code></pre>
+                    <p>
+                        Единственное исключение — пробельные символы в начале и в конце строки, которые игнорируются:
+                    </p>
+                    <pre><code>alert( +"  -12");  // -12
+alert( +" \n34  \n"); // 34, перевод строки \n является пробельным символом
+alert( +"" ); // 0, пустая строка становится нулем
+alert( +"1 2" ); // NaN, пробел посередине числа — ошибка</code></pre>
+                    <p>
+                        Аналогичным образом происходит преобразование и в других математических операторах и функциях:
+                    </p>
+                    <pre><code>alert( '12.34' / "-2" );  // -6.17</code></pre>
+                </div>
+                <div>
+                    <h3><code>isNaN</code> &#8212; проверка на число для строк</h3>
+                    <p>
+                        Функция <code>isNaN</code> является математической, она преобразует аргумент в число, а затем проверяет, 
+                        <code>NaN</code> это или нет.
+                    </p>
+                    <p>
+                        Поэтому можно использовать ее для проверки:
+                    </p>
+                    <pre><code>var x = "-11.5";
+if (isNaN(x)) {
+  alert("Строка преобразовалась в NaN. Не число");  
+} else {
+  alert("Число");</code></pre>
+                    }
+                    <p>
+                        Единственный тонкий момент — в том, что пустая строка и строка из пробельных символов преобразуются к 
+                        <code>0</code>:
+                    </p>
+                    <pre><code>alert(isNaN(" \n\n  ")) // false, число</code></pre>
+                    <p>
+                        И, конечно же, проверка <code>isNaN</code> не сможет проверить численность значений <code>false, null, 
+                            undefined</code>, т.к. они хотя и не числа, но преобразуются к <code>0</code>. Она также считает 
+                        числом бесконечность <code>'Infinity'</code>.
+                    </p>
+                </div>
+            </article>
+            <article id="numbers.parse">
+                <div>
+                    <h2>Мягкое преобразование <code>parseInt</code> и <code>parseFloat</code></h2>
+                    <p>
+                        В мире HTML/CSS многие значения не являются в точности числами. Например, метрики CSS: &laquo;10pt&raquo; 
+                        или &laquo;-12px&raquo;.
+                    </p>
+                    <p>
+                        Оператор <code>'+'</code> возвратит <code>NaN</code>:
+                    </p>
+                    <pre><code>alert( +"12px" ) // NaN</code></pre>
+                    <p>
+                        Для того, чтобы преобразовывать такие числа, существует функция <code>parseInt</code>:
+                    </p>
+                    <pre><code>alert( parseInt('12px') ); // 12</code></pre>
+                    <p>
+                        <code>parseInt</code> и ее аналог <code>parseFloat</code> преобразуют строку символ за символом, пока это возможно. 
+                        При возникновении ошибки возвращается число, которое получилось. <code>parseInt</code> читает из строки целое число, 
+                        а <code>parseFloat</code> — дробное.
+                    </p>
+                    <pre><code>alert( parseInt('12px') ) // 12, ошибка на символе 'p' 
+alert( parseFloat('12.3.4') ) // 12.3, ошибка на второй точке</code></pre>
+                    <p>
+                        Конечно, существуют ситуации, когда <code>parseInt/parseFloat</code> возвращают <code>NaN</code>. Это происходит 
+                        при ошибке на первом же символе:
+                    </p>
+                    <pre><code>alert( parseInt('a123') ); // NaN</code></pre>
+                </div>
+            </article>
+            <article id="numbers.check">
+                <div>
+                    <h2>Проверка на число для всех типов</h2>
+                    <p>
+                        Если вам нужна действительно точная проверка на число, которая не считает числом строку из пробелов, логические и специальные 
+                        значения &#8212; используйте следующую функцию <code>isNumeric</code>:
+                    </p>
+                    <pre><code>function isNumeric(n) {
+  return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);
+}</code></pre>
+                    <p>
+                        Разберёмся, как она работает. Начнём справа.
+                    </p>
+                    <ul>
+                        <li>Функция <code>isFinite(n)</code> преобразует аргумент к числу и возвращает <code>true</code>, если это не 
+                            <code>Inifity/-Infinity/NaN</code>.
+                            <p>Таким образом, правая часть отсеет заведомо не-числа, но оставит такие значения как <code>true/false/null</code> 
+                                и пустую строку <code>''</code>, т.к. они корректно преобразуются в числа.
+                            </p></li>
+                        <li>Для их проверки нужна левая часть. Вызов <code>parseFloat(true/false/null/'')</code> вернёт <code>NaN</code> для этих значений.
+                            <p>Так устроена функция <code>parseFloat</code>: она преобразует аргумент к строке, т.е. <code>true/false/null</code> становятся 
+                                <code>"true"/"false"/"null"</code>, а затем считывает из неё число, при этом пустая строка даёт <code>NaN</code>.</p></li>
+                    </ul>
+                    <p>
+                        В результате отсеивается всё, кроме строк-чисел и обычных чисел.
+                    </p>
+                </div>
+            </article>
+            <article id="numbers.round">
+                <div>
+                    <h2>Округление</h2>
+                    <p>
+                        Одна из самых частых операций с числом — округление. В JavaScript существуют целых 3 функции для этого.
+                    </p>
+                    <p>
+                        <code>Math.floor</code><br/>
+                        Округляет вниз.
+                    </p>
+                    <p>
+                        <code>Math.ceil</code><br/>
+                        Округляет вверх.
+                    </p>
+                    <p>
+                        <code>Math.round</code><br/>
+                        Округляет до ближайшего целого.
+                    </p>
+                    <pre><code>alert( Math.floor(3.1) );  // 3
+alert( Math.ceil(3.1) );   // 4
+alert( Math.round(3.1) );  // 3</code></pre>
+                </div>
+                <div>
+                    <h3>Округление до заданной точности</h3>
+                    <p>
+                        Обычный трюк — это умножить и поделить на 10 с нужным количеством нулей. Например, округлим <code>3.456</code> 
+                        до 2го знака после запятой:
+                    </p>
+                    <pre><code>var n = 3.456;
+alert( Math.round( n * 100 ) / 100 );  // 3.456 -&gt; 345.6 -&gt; 346 -&gt; 3.46</code></pre>
+                    <p>
+                        Таким образом можно округлять число и вверх и вниз.
+                    </p>
+                </div>
+                <div>
+                    <h3><code>toFixed(precision)</code></h3>
+                    <p>
+                        Существует специальный метод <code>toFixed(precision)</code>, который округляет число до точности <code>precision</code> 
+                        и возвращает результат <em>в виде строки</em>:
+                    </p>
+                    <pre><code>var n = 12.34;
+alert( n.toFixed(1) ); // "12.3"</code></pre>
+                    <p>
+                        Округление идёт до ближайшего значения, аналогично <code>Math.round</code>:
+                    </p>
+                    <pre><code>var n = 12.36;
+alert( n.toFixed(1) ); // "12.4"</code></pre>
+                    <p>
+                        Строка при необходмости дополняется нулями:
+                    </p>
+                    <pre><code>var n = 12.34;
+alert( n.toFixed(5) ); // "12.34000"</code></pre>
+                    <p>
+                        Если нам нужно именно число, то мы можем получить его, применив <code>'+'</code> к результату <code>n.toFixed(..)</code>:
+                    </p>
+                    <pre><code>var n = 12.34;
+alert( +n.toFixed(5) ); // 12.34</code></pre>
+                </div>
+            </article>
+            <article id="numbers.inaccurate">
+                <div>
+                    <h2>Неточные вычисления</h2>
+                    <p>
+                        Запустите этот пример у себя в браузере:
+                    </p>
+                    <pre><code>alert(0.1 + 0.2 == 0.3);</code></pre>
+                    <p>
+                        Запустили? Если нет — все же сделайте это.
+                    </p>
+                    <p>
+                        Ок, вы запустили его. Результат несколько странный, не так ли? Возможно, ошибка в браузере? Поменяйте браузер, запустите еще раз.
+                    </p>
+                    <p>
+                        Хорошо, теперь мы можем быть уверены: <code>0.1 + 0.2</code> это не <code>0.3</code>. Но тогда что же это?
+                    </p>
+                    <pre><code>alert(0.1 + 0.2); // 0.30000000000000004</code></pre>
+                    <p>
+                        Как видите, произошла небольшая вычислительная ошибка.
+                    </p>
+                    <p>
+                        Дело в том, что в стандарте IEEE 754 на число выделяется ровно 8 байт, не больше и не меньше.
+                    </p>
+                    <p>
+                        Число <code>0.1 (=1/10)</code> короткое в десятичном формате, а в двоичной системе счисления это бесконечная дробь. 
+                        Также бесконечной дробью является <code>0.2 (=2/10)</code>.
+                    </p>
+                    <p>
+                        Двоичное значение бесконечных дробей хранится только до определенного знака, поэтому возникает неточность. Это даже можно увидеть:
+                    </p>
+                    <pre><code>alert( 0.1.toFixed(20) );  // 0.10000000000000000555</code></pre>
+                    <p>
+                        Когда мы складываем <code>0.1</code> и <code>0.2</code>, то две неточности складываются, получаем третью.
+                    </p>
+                    <p>
+                        Конечно, это не означает, что точные вычисления для таких чисел невозможны. Они возможны. И даже необходимы.
+                    </p>
+                    <p>
+                        Например, есть два способа сложить <code>0.1</code> и <code>0.2</code>:
+                    </p>
+                    <ol>
+                        <li>Сделать их целыми, сложить, а потом поделить:<br/>
+                            <pre><code>alert( (0.1*10 + 0.2*10) / 10 ); // 0.3</code></pre>
+                            <p>Это работает, т.к. числа <code>0.1*10 = 1</code> и <code>0.2*10 = 2</code> могут быть точно представлены в двоичной системе.
+                            </p></li>
+                        <li>Сложить, а затем округлить до разумного знака после запятой. Округления до 10-го знака обычно бывает достаточно, чтобы отсечь 
+                            ошибку вычислений:<br/>
+                            <pre><code>var result = 0.1 + 0.2;
+alert( +result.toFixed(10) ); // 0.3</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+            <article id="numbers.random">
+                <div>
+                    <h2>Случайные числа</h2>
+                    <p>
+                        Функция <code>Math.random()</code> возвращает псевдослучайное число в интервале от 0 до 1, не включая 1:
+                    </p>
+                    <pre><code>alert( Math.random() );</code></pre>
+                </div>
+            </article>
+            <article id="numbers.total">
+                <div>
+                    <h2>Итого</h2>
+                    <ul>
+                        <li>Числа могут быть записаны в шестнадцатиричной, восьмиричной системе, а также &laquo;научным&raquo; способом.</li>
+                        <li>В JavaScript существует числовое значение бесконечность <code>Infinity</code>.</li>
+                        <li>Ошибка вычислений дает <code>NaN</code>.</li>
+                        <li>Арифметические и математические функции преобразуют строку в точности в число, игнорируя начальные и конечные пробелы.</li>
+                        <li>Функции <code>parseInt/parseFloat</code> делают числа из строк, которые начинаются с числа.</li>
+                        <li>Есть четыре способа округления: <code>Math.floor</code>, <code>Math.round</code>, <code>Math.ceil</code> и битовый оператор.
+                            Для округления до нужного знака используйте <code>+n.toFixed(p)</code> или трюк с умножением и делением на <code>10<sup>p</sup></code>.</li>
+                        <li>Дробные числа дают ошибку вычислений. При необходимости ее можно отсечь округлением до нужного знака.</li>
+                        <li>Случайные числа от <code>0</code> до <code>1</code> генерируются с помощью <code>Math.random()</code>, остальные — преобразованием из них.</li>
+                    </ul>
+                </div>     
+            </article>
+            <article id="numbers.test">
+                <h2>Тест</h2>
+                <div>                            
+                    <p>
+                        Попробуйте пройти тест, чтобы проверить, насколько хорошо вы усвоили информацию, изложенную в данном разделе.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 5 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript" >
+                        var res = "43243";
+                    </script>
+
+                    <form name="test"><ol>
+                            <li><INPUT readonly="readonly" type="text" size="1" name="T1"/><strong> Каким форматом представлены числа JS в памяти?</strong><br/>
+                                <input type="radio" name="Q1"/> 4 bit<br />
+                                <input type="radio" name="Q1"/> Double<br />
+                                <input type="radio" name="Q1"/> 6 bit<br />
+                                <input type="radio" name="Q1"/> Double precision<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T2"/><strong> <code>alert(5/0)</code></strong><br/>
+                                <input type="radio" name="Q2"/> 0<br />
+                                <input type="radio" name="Q2"/> Error<br />
+                                <input type="radio" name="Q2"/> Infinity<br />
+                                <input type="radio" name="Q2"/> NaN<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T3"/><strong> <code> var i = 98.31; alert(n.toFixed(5));</code></strong><br/>
+                                <input type="radio" name="Q3"/> 98<br />
+                                <input type="radio" name="Q3"/> 98.31000<br />
+                                <input type="radio" name="Q3"/> 98.31<br />
+                                <input type="radio" name="Q3"/> 95<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T4"/><strong> <code> alert(0.3 + 0.4)</code></strong><br/>
+                                <input type="radio" name="Q4"/> 0.7<br />
+                                <input type="radio" name="Q4"/> 0.70000000000<br />
+                                <input type="radio" name="Q4"/> 7e-1 <br />
+                                <input type="radio" name="Q4"/> другое<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T5"/><strong> Сколько в JavaScript специальных числовых значений?</strong><br/>
+                                <input type="radio" name="Q5"/> 1<br />
+                                <input type="radio" name="Q5"/> 2<br />
+                                <input type="radio" name="Q5"/> 3<br />
+                                <input type="radio" name="Q5"/> 4<br />
+                            </li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                               
+                        </div>
+            </article>
+        </section>
+       	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2013
+		</p>
+	</footer>
+    <script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Массивы | var sity;</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Руководство по основам JavaScript.">
+        <link rel="stylesheet" href="style/varsity.css" media="all">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+
+        <!-- Mobile navigation-->
+        <nav id="nav_mobile">
+            <a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+            <a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+            <a id="show_menu">показать меню</a>
+        </nav>
+        <section id="array">
+            <!-- Introduction-->
+            <header id="array.intro">
+                <div id="logoarray" class="logo">
+                    <a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+                </div>
+                <h1>Массивы</h1>
+            </header>
+            <!-- Articles-->
+            <article id="array.general">
+                <h2>Массивы: введение</h2>
+                <div>
+                    <p>
+                        <em>Массив с числовыми индексами</em> - это коллекция данных, которая хранит сколько 
+                        угодно значений, причем у каждого значения - свой уникальный номер.
+                    </p>
+                    <p>
+                        Если переменная - это <em>коробка для данных</em>, то массив - это <em>шкаф с нумерованными 
+                            ячейками</em>, в каждой из которых могут быть свои данные.
+                    </p>
+                    <p>
+                        Например, при создании электронного магазина нужно хранить список товаров - для таких задач и придуман массив.
+                    </p>
+                </div>
+            </article>
+            <article id="array.declaration">
+                <div>
+                    <h2>Объявление</h2>
+                    <p>
+                        Синтаксис для создания нового массива &#8212; квадратные скобки со списком элементов внутри. Например, создадим массив 
+                        <code>fruits</code> с тремя элементами:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Слива"];</code></pre>
+                    <p>
+                        <strong>Элементы нумеруются, начиная с нуля.</strong> Чтобы получить нужный элемент из массива &#8212; указывается его номер в 
+                        квадратных скобках:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Слива"];
+
+alert(fruits[0]); // Яблоко
+alert(fruits[1]); // Апельсин
+alert(fruits[2]); // Слива</code></pre>
+                    <p>
+                        Элемент можно всегда заменить:<br/>
+                        <code>fruits[2] = 'Груша'; // теперь ["Яблоко", "Апельсин", "Груша"]</code>
+                    </p>
+                    <p>
+                        Или добавить:<br/>
+                        <code>fruits[3] = 'Лимон'; // теперь ["Яблоко", "Апельсин", "Груша", "Лимон"]</code>
+                    </p>
+                    <p>
+                        Общее число элементов, хранимых в массиве, содержится в его свойстве <code>length</code>:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Груша"]; 
+
+alert(fruits.length); // 3</code></pre>
+                    <p>     
+                        <strong>Через <code>alert</code> можно вывести и массив целиком.</strong> При этом его элементы будут перечислены через запятую:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Груша"]; 
+
+alert(fruits); // Яблоко,Апельсин,Груша</code></pre>
+                    <p>
+                        <strong>В массиве может храниться любое число элементов любого типа.</strong> В том числе, строки, числа, объекты и т.п.:
+                    </p>
+                    <pre><code>// микс значений
+var arr = [ 1, function(a) { alert(a) }, 'Имя', { name: 'Петя' }, true ];
+
+// получить функцию из массива и тут же вызвать
+arr[1]("тест");</code></pre>
+                </div>
+            </article>
+            <article id="array.poppush">
+                <div>
+                    <h2>Методы pop/push, shift/unshift</h2>
+                    <p>
+                        Одно из применений массива &#8212; это <a href="http://ru.wikipedia.org/wiki/%D0%9E%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C_%28%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%29">очередь</a>. 
+                        В классическом программировании так называют упорядоченную коллекцию элементов, такую что элементы добавляются в конец, а обрабатываются &#8212; с начала.
+                    </p>
+                    <p>     
+                        В реальной жизни эта структура данных встречается очень часто. Например, очередь сообщений, которые надо отослать.
+                    </p>
+                    <p>     
+                        Очень близка к очереди еще одна структура данных: <a href="http://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B5%D0%BA">стек</a>. Это такая коллекция элементов, в 
+                        которой новые элементы добавляются в конец и берутся с конца.
+                    </p>
+                    <p>     
+                        Например, стеком является колода карт, в которую новые карты кладутся сверху, и берутся &#8212; тоже сверху.
+                    </p>
+                    <p>     
+                        Для того, чтобы реализовывать эти структуры данных, и просто для более удобной работы с началом и концом массива существуют специальные методы.
+                    </p>
+                </div>
+                <div>
+                    <h3>Конец массива</h3>
+                    <p>
+                        <code>pop</code>: удаляет <em>последний</em> элемент из массива и возвращает его:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Груша"];
+
+alert( fruits.pop() ); // удалили "Груша"
+
+alert(fruits); // Яблоко, Апельсин</code></pre>
+                    <p>
+                        <code>push</code>: добавляет элемент <em>в конец</em> массива:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин"];
+
+fruits.push("Груша");
+
+alert(fruits); // Яблоко, Апельсин, Груша</code></pre>
+                    <p>
+                        Является полным аналогом <code>fruits[fruits.length] = ...</code>.
+                    </p>
+                </div>
+                <div>
+                    <h3>Начало массива</h3>
+                    <p>
+                        <code>shift</code>: удаляет из массива <em>первый</em> элемент и возвращает его:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Груша"];
+
+alert( fruits.shift() ); // удалили Яблоко
+
+alert(fruits); // Апельсин, Груша</code></pre>
+                    <p>
+                        <code>unshift</code>: добавляет элемент <em>в начало</em> массива:
+                    </p>
+                    <pre><code>var fruits = ["Апельсин", "Груша"];
+
+fruits.unshift('Яблоко');
+
+alert(fruits); // Яблоко, Апельсин, Груша</code></pre>
+                    <p>
+                        <img src="image/shiftpush.png" width="528" height="96"/>
+                    </p>
+                    <p>
+                        Методы <code>push/pop</code> выполняются быстро, а <code>shift/unshift</code> - медленно.
+                    </p>
+                    <p>
+                        Методы <code>push</code> и <code>unshift</code> могут добавлять сразу по несколько элементов:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко"];
+
+fruits.push("Апельсин", "Персик");
+fruits.unshift("Ананас", "Лимон");
+
+// результат: ["Ананас", "Лимон", "Яблоко", "Апельсин", "Персик"]</code></pre>
+                </div>
+            </article>
+            <article id="array.iterates">
+                <div>
+                    <h2>Перебор элементов</h2>
+                    <p>
+                        Для перебора элементов обычно используется цикл:
+                    </p>
+                    <pre><code>var fruits = ["Яблоко", "Апельсин", "Груша"];
+
+for (var i=0; i&lt;fruits.length; i++) {
+  alert(fruits[i]);
+}</code></pre>
+                </div>
+            </article>
+            <article id="array.length">
+                <div>
+                    <h2>Использование <code>length</code> для укорачивания массива</h2>
+                </div>
+                <div>
+                    <h3>Начало массива</h3>
+                    <p>
+                        Встроенные методы для работы с массивом автоматически обновляют его длину <code>length</code>. Обычно нам не нужно 
+                        самостоятельно менять это свойство.
+                    </p>
+                    <p>
+                        Но есть один фокус, который можно провернуть. Дело в том, что при уменьшении <code>length</code> массив укорачивается. 
+                        Причем этот процесс необратимый, т.е. даже если потом вернуть <code>length</code> обратно &#8212; значения не восстановятся:
+                    </p>
+                    <pre><code>var arr = [0, 1, 2, 3] 
+
+arr.length = 2; // укоротить до 2 элементов, т.е [0,1]
+arr.length = 4; // вернуть `length` (в тестовых целях)
+
+alert(arr[3]); // значение исчезло</code></pre>
+                    <p>
+                        <strong>Самый простой способ очистить массив &#8212; это <code>arr.length=0</code></strong>.
+                    </p>
+                </div>
+                <div>
+                    <h3><code>length = последний индекс + 1</code></h3>
+                    <p>
+                        <strong>Свойство <code>length</code> - не количество элементов массива, а <code>последний индекс + 1</code></strong>. Так уж оно устроено.
+                    </p>
+                    <p>
+                        Это позволяет разрешить дилемму &laquo;чему равно <code>length</code> если присвоена одна ячейка с номером <code>1000</code>?&raquo;. Конечно же, 
+                        <code>1001</code>.
+                    </p>
+                    <pre><code>var arr = [];
+arr[1000] = true;
+
+alert(arr.length); // 1001</code></pre>
+                    <p>
+                        В реальной жизни в таких случаях рекомендуется использовать обычные объекты, т.к. методы массивов продуманы для работы с последовательной нумерацией.
+                    </p>
+                </div>
+            </article>
+            <article id="array.aboutcreating">
+                <div>
+                    <h2>Еще о создании массивов</h2>
+                </div>
+                <div>
+                    <h3><code>new Array()</code></h3>
+                    <p>
+                        Существует еще один синтаксис для создания массива:<br/>
+                        <code>var arr = new Array("Яблоко", "Груша", "и т.п.");</code>
+                    </p>
+                    <p>
+                        Он редко используется, т.к. квадратные скобки <code>[]</code> короче.
+                    </p>
+                    <p>
+                        Кроме того, у него есть одна особенность. Вызов <code>new Array(number)</code> с единственным аргументом &#8212; числом создает массив <em>без элементов, 
+                            но с заданной длиной</em>.
+                    </p>
+                    <pre><code>var arr = new Array(2,3) // создает массив [2, 3]
+
+arr = new Array(2) // создаст массив [2] ?
+
+alert(arr[0]) // нет! у нас массив без элементов, длины 2</code></pre>
+                    <p>
+                        Что же такое этот &laquo;массив без элементов, но с длиной&raquo;? Как такое возможно?
+                    </p>
+                    <p>
+                        Оказывается, очень даже возможно и соответствует объекту <code>{length: 2}</code>. Получившийся массив ведёт себя так, как будто его элементы равны 
+                        <code>undefined</code>.
+                    </p>
+                    <p>
+                        Это может быть неожиданным сюрпризом, поэтому обычно используют квадратные скобки.
+                    </p>
+                </div>
+                <div>
+                    <h3>Многомерные массивы</h3>
+                    <p>
+                        Массивы в JavaScript могут содержать в качестве элементов другие массивы. Это можно использовать для создания многомерных массивов, например матриц:
+                    </p>
+                    <pre><code>var matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+alert(matrix[1][1]); // центральный элемент</code></pre>
+                </div>
+            </article>
+            <article id="array.methods">
+                <div>
+                    <h2>Массивы: методы</h2>
+                    <p>
+                        В этом разделе мы рассмотрим некоторые встроенные методы массивов JavaScript.
+                    </p>
+                </div>
+                <div>
+                    <h3>Метод <code>split</code></h3>
+                    <p>
+                        Ситуация из реальной жизни. Мы пишем сервис отсылки сообщений и посетитель вводит имена тех, кому его отправить: <code>Маша, Петя, Марина, Василий...</code>. 
+                        Но нам-то гораздо удобнее работать с массивом имен, чем с одной строкой.
+                    </p>
+                    <p>
+                        К счастью, есть метод <code>split(s)</code>, который позволяет превратить строку в массив, разбив ее по разделителю <code>s</code>. В примере ниже таким разделителем 
+                        является строка из запятой и пробела.
+                    </p>
+                    <pre><code>var names = 'Маша, Петя, Марина, Василий';
+
+var arr = names.split(', ');
+
+for (var i=0; i&lt;arr.length; i++) { 
+  alert('Вам сообщение ' + arr[i]);
+}</code></pre>
+                    <aside>
+                        <p>
+                            Второй аргумент <code>split</code>
+                        </p>
+                        <p>
+                            У метода <code>split</code> есть необязательный второй аргумент &#8212; ограничение на количество элементов в массиве. Если их больше, чем указано &#8212; остаток 
+                            массива будет отброшен. На практике он используется редко.
+                        </p>
+                    </aside>
+                </div>
+                <div>
+                    <h3>Метод <code>join</code></h3>
+                    <p>
+                        Вызов <code>arr.join(str)</code> делает в точности противоположное <code>split</code>. Он берет массив и склеивает его в строку, используя <code>str</code> как разделитель.
+                    </p>
+                    <p>
+                        Например:
+                    </p>
+                    <pre><code>var arr = ['Маша', 'Петя', 'Марина', 'Василий'];
+
+var str = arr.join(';');
+
+alert(str); // Маша;Петя;Марина;Василий</code></pre>
+                </div>
+                <div>
+                    <h3>Удаление из массива</h3>
+                    <p>
+                        Так как массивы являются объектами, то для удаления ключа можно воспользоваться обычным <code>delete</code>:
+                    </p>
+                    <pre><code>var arr = ["Я", "иду", "домой"];
+
+delete arr[1]; // значение с индексом 1 удалено
+
+// теперь arr = ["Я", undefined, "домой"];
+alert(arr[1]); // undefined</code></pre>
+                    <p>
+                        Да, элемент удален из массива, но не так, как нам этого хочется. Образовалась &laquo;дырка&raquo;.
+                    </p>
+                </div>
+                <div>
+                    <h3>Метод <code>splice</code></h3>
+                    <p>
+                        Метод <code>splice</code> - это универсальный раскладной нож для работы с массивами. Умеет все: удалять элементы, вставлять элементы, 
+                        заменять элементы - по очереди и одновременно.
+                    </p>
+                    <p>
+                        Его синтаксис:
+                    </p>
+                    <p>
+                        <code>arr.splice(index[, deleteCount, elem1, ..., elemN])</code><br/>
+                        Удалить <code>deleteCount</code> элементов, начиная с номера <code>index</code>, а затем вставить  <code>elem1, ..., elemN</code> 
+                        на их место.
+                    </p>
+                    <p>
+                        Посмотрим примеры.
+                    </p>
+                    <pre><code>var arr = ["Я", "изучаю", "JavaScript"];
+
+arr.splice(1, 1);  // удалить 1 элемент, начиная с позиции 1
+
+alert(arr); //  осталось ["Я", "JavaScript"]</code></pre>
+                    <p>
+                        Здесь продемонстрировано, как <strong>использовать <code>splice</code> для удаления одного элемента. Следующие за удаленным элементы 
+                            сдвигаются, чтобы заполнить его место.</strong>
+                    </p>
+                    <p>
+                        Следующий пример показывает, как <em>заменять элементы</em>:
+                    </p>
+                    <pre><code>var arr = [*!*"Я", "сейчас", "изучаю",*/!* "JavaScript"];
+
+// удалить 3 первых элемента и добавить другие вместо них
+arr.splice(0, 3, "Мы", "изучаем") 
+
+alert( arr ) // теперь ["Мы", "изучаем", "JavaScript"]</code></pre>
+                    <p>
+                        Метод <strong><code>splice</code> возвращает массив из удаленных элементов</strong>:
+                    </p>
+                    <pre><code>var arr = ["Я", "сейчас", "изучаю", "JavaScript"];
+
+// удалить 2 первых элемента 
+var removed = arr.splice(0, 2); 
+
+alert( removed ); // "Я", "сейчас" &lt;-- массив из удаленных элементов</code></pre>
+                </div>
+                <div>
+                    <h3>Метод <code>slice</code></h3>    
+                    <p>
+                        Метод <code>slice(begin, end)</code> копирует участок массива от <code>begin</code> до <code>end</code>, не включая <code>end</code>. 
+                        Исходный массив при этом не меняется.
+                    </p>
+                    <p>
+                        Например:
+                    </p>
+                    <pre><code>var arr = ["Почему", "надо", "учить", "JavaScript"];
+
+var arr2 = arr.slice(1,3); // элементы 1, 2 (не включая 3)
+
+alert(arr2); // надо, учить</code></pre>
+                    <p>
+                        Аргументы ведут себя также, как и в строковом <code>slice</code>.
+                    </p>
+                    <p>
+                        Если не указать <code>end</code> - копирование до конца массива:
+                    </p>
+                    <pre><code>var arr = ["Почему", "надо", "учить", "JavaScript"];
+
+alert( arr.slice(1) ); // взять все элементы, начиная с номера 1</code></pre>
+                    <p>
+                        Можно использовать отрицательные индексы, они отсчитываются с конца.
+                    </p>
+                </div>
+                <div>
+                    <h3>Сортировка, метод <code>sort(fn)</code></h3>
+                    <p>
+                        Метод <code>sort()</code> сортирует массив <em>на месте</em>. Например:
+                    </p>
+                    <pre><code>var arr = [ 1, 2, 15 ];
+
+arr.sort();
+
+alert( arr );  // 1, 15, 2</code></pre>
+                    <p>
+                        Порядок стал <code>1, 15, 2</code>. Это произошло потому, что <strong><code>sort</code> сортирует, преобразуя элементы к строке</strong>. Поэтому и порядок у них строковый, 
+                        ведь <code>"2" &gt; "15"</code>.
+                    </p>
+                </div>
+                <div>
+                    <h3><code>reverse</code></h3>
+                    <p>
+                        Метод <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reverse">arr.reverse()</a> меняет порядок элементов в массиве на обратный.
+                    </p>
+                    <pre><code>var arr = [1,2,3];
+arr.reverse();
+
+alert(arr); // 3,2,1</code></pre>
+                </div>
+                <div>
+                    <h3><code>concat</code></h3>
+                    <p>
+                        Метод <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/concat">arr.concat(value1, value2, &#8230; valueN)</a> создаёт новый массив, 
+                        в который копируются элементы из <code>arr</code>, а также <code>value1, value2, ... valueN</code>.
+                    </p>
+                    <p>
+                        Например:
+                    </p>
+                    <pre><code>var arr = [1,2];
+var newArr = arr.concat(3,4);
+
+alert(newArr); // 1,2,3,4</code></pre>
+                    <p>
+                        <strong>Если <code>value</code> &#8212; массив, то <code>concat</code> добавляет его элементы.</strong>
+                    </p>
+                    <pre><code>var arr = [1,2];
+var newArr = arr.concat( [3,4], 5);// то же самое, что arr.concat(3,4,5)
+
+alert(newArr); // 1,2,3,4,5</code></pre>
+                </div>
+            </article>
+            <article id="array.total">
+                <div>
+                    <h2>Итого</h2>
+                    <p>
+                        Массивы существуют для работы с упорядоченным набором элементов.
+                    </p>
+                    <p>
+                        <strong>Объявление:</strong>
+                    </p>
+                    <pre><code>// предпочтительное
+var arr = [ элемент1, элемент2... ];
+
+// new Array
+var arr = new Array( элемент1, элемент2...);;</code></pre>
+                    <p>
+                        При этом <code>new Array(число)</code> создаёт массив заданной длины, <em>без элементов</em>. Чтобы избежать ошибок, 
+                        предпочтителен первый синтаксис.
+                    </p>
+                    <p>
+                        <strong>Свойство <code>length</code></strong> &#8212; длина массива. Если точнее, то последний индекс массива плюс <code>1</code>. 
+                        Если её уменьшить вручную, то массив укоротится. Если <code>length</code> больше реального количества элементов, то отсутствующие 
+                        элементы равны <code>undefined</code>.
+                    </p>
+                    <p>
+                        Массив можно использовать как очередь или стек.
+                    </p>
+                    <p>
+                        <strong>Операции с концом массива:</strong>
+                    </p>
+                    <ul>
+                        <li><code>arr.push(элемент1, элемент2...)</code> добавляет элементы в конец.</li>
+                        <li><code>var elem = arr.pop()</code> удаляет и возвращает последний элемент.</li>
+                    </ul>
+                    <p>
+                        <strong>Операции с началом массива:</strong>
+                    </p>
+                    <ul>
+                        <li><code>arr.unshift(элемент1, элемент2...)</code> добавляет элементы в начало.</li>
+                        <li><code>var elem = arr.shift()</code> удаляет и возвращает первый элемент.</li>
+                    </ul>
+                    <p>
+                        Эти операции перенумеровывают все элементы, поэтому работают медленно.
+                    </p>
+                    <p>
+                        <strong>Методы:</strong>
+                    </p>
+                    <ul>
+                        <li><code>push/pop</code>, <code>shift/unshift</code>, <code>splice</code> &#8212; для добавления и удаления элементов.</li>
+                        <li><code>join/split</code> &#8212; для преобразования строки в массив и обратно.</li>
+                        <li><code>sort</code> &#8212; для сортировки массива. Если не передать функцию сравнения &#8212; сортирует элементы как строки.</li>
+                        <li><code>reverse</code> &#8212; меняет порядок элементов на обратный.</li>
+                        <li><code>concat</code> &#8212; объединяет массивы.</li>
+                    </ul>
+                    <p>
+                        Изученных нами методов достаточно в 95% случаях, но существуют и другие. Для знакомства с ними рекомендуется заглянуть в справочник 
+                        <a href="http://javascript.ru/Array">Array</a> и <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array">Array 
+                            в Mozilla Developer Network</a>.
+                    </p>
+                </div>
+            </article>
+            <article id="array.test">
+                <h2>Тест</h2>
+                <div>                            
+                    <p>
+                        Попробуйте пройти тест, чтобы проверить, насколько хорошо вы усвоили информацию, изложенную в данном разделе.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 5 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript" >
+                        var res = "23421";
+                    </script>
+
+                    <form name="test"><ol>
+                            <li><INPUT readonly="readonly" type="text" size="1" name="T1"/><strong> Как правильно описать массив?</strong><br/>
+                                <input type="radio" name="Q1"/> <code> var txt = new Array(1:"tim",2:"kim",3:"jim")</code><br />
+                                <input type="radio" name="Q1"/> <code> var txt = new Array("tim","kim","jim")</code><br />
+                                <input type="radio" name="Q1"/> <code> var txt = new Array="tim","kim","jim"</code><br />
+                                <input type="radio" name="Q1"/> <code> var txt = new Array:1=("tim")2=("kim")3=("jim")</code><br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T2"/><strong> Как превратить информацию, состоящую из значений разделенных запятыми, в массив?</strong><br/>
+                                <input type="radio" name="Q2"/> <code> txtArray = txt.indexOf(',');</code><br />
+                                <input type="radio" name="Q2"/> <code> txtArray = txt.trim(',');</code><br />
+                                <input type="radio" name="Q2"/> <code> txtArray = txt.split(',');</code><br />
+                                <input type="radio" name="Q2"/> <code> txtArray = txt.substring(',');</code><br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T3"/><strong> Массив может содержать:</strong><br/>
+                                <input type="radio" name="Q3"/> Только текст<br />
+                                <input type="radio" name="Q3"/> Только числа<br />
+                                <input type="radio" name="Q3"/> Только текст и числа<br />
+                                <input type="radio" name="Q3"/> Любой тип переменных<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T4"/><strong> Как обратиться к записи массива</strong><br/>
+                                <input type="radio" name="Q4"/> <code> myarray(entry)</code><br />
+                                <input type="radio" name="Q4"/> <code> myarray[entry]</code><br />
+                                <input type="radio" name="Q4"/> <code> myarray{entry}</code> <br />
+                                <input type="radio" name="Q4"/> <code> myarray:entry</code><br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T5"/><strong> Q5</strong><br/>
+                                <input type="radio" name="Q5"/> <code> txt.indexOf('X');</code><br />
+                                <input type="radio" name="Q5"/> <code> txt.find('X');</code><br />
+                                <input type="radio" name="Q5"/> <code> txt.locate('X');</code><br />
+                                <input type="radio" name="Q5"/> <code> txt.countTo('X');</code><br />
+                            </li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                               
+                        </div>
+            </article>
+	</section>
+       	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2012
+		</p>
+	</footer>
+	<script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>

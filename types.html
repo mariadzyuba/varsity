@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Типы | var sity;</title>
+<meta charset="utf-8">
+<meta name="description" content="Руководство по основам JavaScript.">
+<link rel="stylesheet" href="style/varsity.css" media="all">
+<link rel="stylesheet" href="style/print.css" media="print">
+<!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+<link rel="icon" href="image/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+	<!-- Mobile navigation-->
+	<nav id="nav_mobile">
+		<a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+		<a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+		<a id="show_menu">показать меню</a>
+	</nav>
+	<section id="types">
+		<!-- Introduction-->
+		<header id="types.intro">
+			<div id="logotypes" class="logo">
+				<a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+			</div>
+			<h1>Переменные и типы данных</h1>
+		</header>
+		<!-- Articles-->
+		<article id="types.variable">
+			<div>
+				<h2>Переменная</h2>
+				<p>
+					Для объявления или, другими словами, создания переменной
+					используется ключевое слово
+					<code>var</code>:
+				</p>
+				<pre><code>var message;</code></pre>
+				<p>После объявления, можно записать в переменную данные:</p>
+				<pre><code>var message;
+message = 'Привет'; // сохраним в переменной строку</code></pre>
+				<p>Эти данные будут сохранены в соответствующей области памяти и
+					в дальнейшем доступны при обращении по имени:</p>
+				<pre><code>var message;
+message = 'Привет'; 
+
+alert(message); // выведет содержимое переменной</code></pre>
+				<p>Для краткости можно совместить объявление переменной и запись
+					данных:</p>
+				<pre><code>var message = 'Привет';</code></pre>
+			</div>
+		</article>
+		<article id="types.copy">
+			<div>
+				<h2>Копирование значений</h2>
+				<p>Переменные в JavaScript могут хранить не только строки, но и
+					другие данные, например, числа.</p>
+				<p>Объявим две переменные, положим в одну - строку, а в другую -
+					число. Как вы можете видеть, переменной без разницы, что хранить:</p>
+				<pre><code>var num = 100500;
+var message = 'Привет';</code></pre>
+				<p>Значение можно копировать из одной переменной в другую.</p>
+				<pre><code>var num = 100500;
+var message = 'Привет';
+
+message = num;</code></pre>
+				<p>
+					Значение из <code>num</code> перезаписывает текущее в <code>message</code>.
+				</p>
+			</div>
+		</article>
+		<article id="types.var">
+			<div>
+				<h2>Директива <code>var</code></h2>
+				<p>
+					В JavaScript вы можете создать переменную и без <code>var</code>, достаточно просто присвоить ей значение:
+				</p>
+				<pre><code>x = "value"; // переменная создана, если ее не было</code></pre>
+				<p>Технически, это не вызовет ошибки, но делать так все-таки не стоит.</p>
+				<p>
+					<strong>Всегда определяйте переменные через var.</strong> Это хороший тон в
+					программировании и помогает избежать ошибок.
+				</p>
+			</div>
+		</article>
+		<article id="types.constants">
+			<div>
+				<h2>Константы</h2>
+				<p>
+					<i>Константа</i> — это переменная, которая никогда не меняется. Как правило, их называют большими буквами, через подчёркивание. Например:
+				</p>
+				<pre><code>var COLOR_BLUE = "#00F";
+var COLOR_RED = "#0F0";
+var COLOR_GREEN = "#F00";
+var COLOR_ORANGE = "#FF7F00";
+
+alert(COLOR_RED); // #0F0</code></pre>
+				<p>
+					Технически, константа является обычной переменной, то есть её
+					можно изменить. Но мы договариваемся этого не делать.</p>
+				<p>
+					Зачем нужны константы? Почему бы просто не использовать <code>"#F00"</code> или <code>"#0F0"</code>?
+				</p>
+				<ul>
+					<li>Во-первых, константа — это понятное имя, в отличие от строки <code>"#FF7F00"</code>.</li>
+					<li>Во-вторых, опечатка в строке может быть не замечена, а в имени константы её упустить невозможно — будет ошибка при выполнении.</li>
+				</ul>
+				<p>
+					<strong>Константы используют вместо строк и цифр, чтобы сделать программу понятнее и избежать ошибок.</strong>
+				</p>
+			</div>
+		</article>
+		<article id="types.names">
+			<div>
+				<h2>Имена переменных</h2>
+				<p>На имя переменной наложены два ограничения.</p>
+				<ol>
+					<li>Имя может состоять из: букв, цифр, символов <code>$</code>
+						и <code>_</code></li>
+					<li>Первый символ не должен быть цифрой.</li>
+				</ol>
+				<p>
+					Например:
+				</p>				
+				<pre><code>var myName;
+var test123;</code></pre>
+				<p>
+					Что здесь особенно интересно - доллар <code>'$'</code> и знак подчеркивания
+					<code>'_'</code> являются такими же обычными символами, как буквы:
+				</p>
+				<pre><code>var $ = 5;  // объявили переменную с именем '$'
+var _ = 15; // переменная с именем '_'
+
+alert($);</code></pre>
+				<p>
+					А такие переменные были бы неправильными:
+				</p>
+				
+				<pre><code>
+var 1a; // начало не может быть цифрой
+
+var my-name; // дефис '-' не является разрешенным символом</code></pre>
+			
+				<aside>
+					<p>
+						Регистр букв имеет значение: переменные <code>apple</code> и <code>AppLE</code> - две разные переменные.
+					</p>
+				</aside>
+				<p>
+					Русские буквы допустимы: можно использовать и русские буквы:
+				</p>
+				<pre><code>var имя = "Вася";
+alert(имя);</code></pre>
+				<p>
+					Ошибки нет, но на практике сложилась традиция использовать в именах
+					только английские буквы.
+				</p>
+				<p>
+					Существует список зарезервированных слов, которые нельзя использовать при именовании переменных, так как они используются самим языком, например: <code>var</code>, <code>class</code>,
+					<code>return</code>, <code>implements</code> и др.
+				</p>
+				<p>
+					Некоторые слова, например, <code>class</code>, не используются в современном JavaScript, но они заняты на будущее. Некоторые браузеры позволяют их использовать, но это может привести к ошибкам.
+				</p>
+				<p>
+					Следующий пример будет работать во многих старых браузерах, которые допускают использование слова <code>'class'</code> и не сработает в современных Firefox/Safari, которые выдадут синтаксическую ошибку:
+				</p>
+				<pre><code>var class = 5;
+alert(class);</code></pre>
+				<p>
+					Правильный выбор имени переменной - одна из самых важных и сложных вещей в программировании, которая отличает начинающего от гуру.
+				</p>
+				<p>
+					Дело в том, что большинство времени мы тратим не на
+					изначальное написание кода, а на его развитие.
+				</p>
+				<p>
+					А что такое развитие? Это когда я вчера написал код, а сегодня (или спустя неделю) прихожу и хочу его поменять. Например,
+					вывести сообщение не так, а эдак.. Обработать товары по-другому,
+					добавить функционал.. А где у меня там сообщение хранится?..
+				</p>
+				<p>
+					Гораздо проще найти нужные данные, если они правильно помечены, т.е. переменная названа <em>правильно</em>.
+				</p>
+				<ul>
+					<li>
+						<p>
+							<strong>Правило 1.</strong> Никакого транслита. Только английский. Неприемлемы:
+						</p>
+						<pre><code>var moiTovari;
+var cena;
+var ssilka;</code></pre>
+						<p>
+							Подойдут:
+						</p>
+						<pre><code>var myGoods; 
+var price;
+var link;</code></pre>
+					</li>
+					<li>
+						<p>
+							<strong>Правило 2.</strong> Использовать короткие имена только для переменных "местного значения".
+						</p>
+						<p>
+							Называть переменные именами, не несущими смысловой нагрузки, например <code>a</code>, <code>e</code>,
+							<code>p</code>, <code>mg</code> - можно только в том случае, если они используются в небольшом фрагменте кода и их применение очевидно.
+						</p>
+						<p>
+							Вообще же, название переменной должно быть понятным. Иногда для этого нужно использовать несколько слов.
+						</p>
+					</li>
+					<li>
+						<p>
+							<strong>Правило 3.</strong> Переменные из нескольких слов пишутся <code>вместеВотТак</code>. Например:
+						</p>
+						<pre><code>var borderLeftWidth;</code></pre>
+						<p>
+							Этот способ записи называется "верблюжьей нотацией"; или, по-английски, "camelCase".
+						</p>
+						<p>
+							Существует альтернативный стандарт, когда несколько слов пишутся
+							через знак подчеркивания
+							<code>'_'</code>:
+						<pre><code>var border_left_width;</code></pre>
+						<p>
+							Преимущественно в JavaScript используется вариант <code>borderLeftWidth</code>, в частности во встроенных языковых и браузерных функциях. Поэтому целесообразно остановиться на нём.
+						</p>
+						<p>
+							Ещё одна причина выбрать "верблюжью нотацию" - запись в ней немного короче, чем c подчеркиванием, т.к. не нужно вставлять <code>'_'</code>.
+						</p>
+					</li>
+					<li>
+						<strong>Правило последнее, главное.</strong> Имя переменной должно максимально четко соответствовать хранимым в ней данным.
+						<p>
+							Придумывание таких имен - одновременно коротких и точных, приходит с опытом, но только если сознательно стремиться к этому.
+						</p>
+					</li>
+				</ul>
+				<p>
+					Позвольте поделиться одним небольшим секретом, который позволит улучшить ваши названия переменных и сэкономит вам время.
+				</p>
+				<p>
+					Бывает так, что вы написали код, через некоторое время к нему
+					возвращаетесь, и вам надо что-то поправить. Например, изменить
+					какую-то рамку "<code>border</code> ..."
+				</p>
+				<p>
+					И вы помните, что переменная, в которой хранится нужное вам
+					значение, называется примерно так: <code>borderLeftWidth</code>. Вы ищете ее в коде, не находите, разбираетесь, и обнаруживаете,
+					что на самом деле переменная называлась вот так: <code>leftBorderWidth</code>. После чего вносите нужные правки.
+				</p>
+				<p>
+					В этом случае, <strong>самый лучший ход - это <em>переименовать</em> переменную на ту, которую вы искали изначально
+					</strong>. То есть, у вас в коде <code>leftBorderWidth</code>, а вы ее переименовываете на <code>borderLeftWidth</code>.
+				</p>
+				<p>
+					Зачем? Дело в том, что в следующий раз, когда вы захотите
+					что-то поправить, то вы будете искать по тому же самому имени.
+					Соответственно, это сэкономит вам время.
+				</p>
+				<p>
+					Кроме того, поскольку именно это имя переменной пришло вам в
+					голову - скорее всего, оно больше соответствует хранимым там
+					данным, чем то, которое вы придумали изначально.
+				</p>
+				<p>
+					Смысл имени переменной - это имя на коробке, по которому мы сможем максимально быстро находить нужные нам данные.
+				</p>
+				<p>
+					Не нужно бояться переименовывать переменные, современные редакторы позволяют делать это очень удобно. Это в конечном счете сэкономит вам время.
+				</p>
+			</div>
+		</article>
+		<article id="types.basetypes">
+			<div>
+				<h2>Типы данных</h2>
+				<p>
+					В JavaScript существует несколько основных типов данных.
+				</p>
+				<ol>
+					<li>
+						<p>
+							<strong>Число <code>number</code></strong>:
+						</p>
+						<pre><code>var n = 123;
+n = 12.345;</code></pre>
+						<p>
+							Тип <em>число</em> используется как для целых, так и для дробных чисел.
+						</p>
+					</li>
+					<li>
+						<p>
+							<strong>Строка <code>string</code></strong>:
+						</p>
+						<pre><code>var str = "Мама мыла раму";
+str = 'Одинарные кавычки тоже подойдут';</code></pre>
+						<p>
+							<strong>В JavaScript одинарные и двойные кавычки равноправны.</strong> Можно использовать или те или другие.
+						</p>
+						<aside>
+							<p>
+								Тип <em>символ</em> не существует, есть только <em>строка</em>
+								В некоторых языках программирования есть специальный тип данных
+								для одного символа. Например, в языке С это
+								<code>char</code>. В JavaScript есть только тип &laquo;строка&raquo;
+								<code>string</code>. Что, надо сказать, вполне удобно..
+							</p>
+						</aside>
+					</li>
+					<li>
+						<p>
+							<strong>Булевый (логический) тип <code>boolean</code></strong>. У него всего два значения - <code>true</code> (истина) и <code>false</code>	(ложь).
+						</p>
+						<p>
+							Как правило, такой тип используется для хранения значения типа
+							да/нет, например:
+						</p>
+						<pre><code>var checked = true; // поле формы помечено галочкой
+checked = false;    // поле формы не содержит галочки</code></pre>
+						<p>
+							Мы поговорим более подробно, когда будем обсуждать логические вычисления и условные операторы.
+						</p>
+					</li>
+					<li>
+						<p>
+							<strong><code>null</code></strong> - специальное значение. Оно имеет смысл &laquo;ничего&raquo;. Значение <code>null</code>
+							не относится ни к одному из типов выше, а образует свой отдельный тип, состоящий из единственного значения <code>null</code>:
+						</p>
+						<pre><code>var x = null;</code></pre> 
+						<p>
+							В JavaScript <code>null</code> не является "ссылкой на несуществующий объект" или "нулевым указателем",
+							как в некоторых других языках. Это просто специальное значение,
+							которое имеет смысл "ничего" или "значение неизвестно".
+						</p>
+					</li>
+					<li>
+						<p>
+							<strong><code>undefined</code></strong> - специальное значение, которое, как и <code>null</code>, образует
+							свой собственный тип. Оно имеет смысл "значение не присвоено".
+						</p>
+						<p>
+							Если переменная объявлена, но в неё ничего не записано, то ее
+							значение как раз и есть
+							<code>undefined</code>:
+						</p>
+						<pre><code>var u;
+alert(u); // выведет "undefined"</code></pre> 
+						<p>
+							Можно присвоить <code>undefined</code> и в явном виде, хотя это делается редко:
+						</p>
+						<pre><code>var x = 123;
+x = undefined;</code></pre>
+						<p>
+							В явном виде <code>undefined</code> обычно не присваивают.
+						</p>
+						<p>
+							<strong>Итак, существуют пять типов: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>.</strong>
+						</p>
+						<p>
+							Эти типы данных называют <em>примитивными</em>, в отличие от <strong>шестого
+							типа - "объектов"</strong>, к которым мы перейдем позже.
+						</p>
+					</li>
+				</ol>
+			</div>
+		</article>
+		<article id="types.equality">
+			<h2>﻿Равенство и сравнение</h2>
+			<div>
+				<p>JavaScript имеет 2 различных способа сравнения значений
+					объектов на равенство.</p>
+
+			</div>
+			<div>
+				<h3>Оператор сравнения</h3>
+
+				<p>
+					Оператор сравнения состоит из <strong>двух</strong> символов
+					равенства:
+					<code>==</code>
+				</p>
+
+				<p>
+					<em>Слабая типизированность</em> языка JavaScript подразумевает <strong>приведение</strong>
+					обеих переменных к <strong>одному типу</strong> для того, чтобы
+					произвести сравнение.
+				</p>
+				<pre><code>""           ==   "0"           // false
+0            ==   ""            // true
+0            ==   "0"           // true
+false        ==   "false"       // false
+false        ==   "0"           // true
+false        ==   undefined     // false
+false        ==   null          // false
+null         ==   undefined     // true
+" \t\r\n"    ==   0             // true</code></pre>
+
+				<p>
+					В таблице выше показаны результаты приведения типов и это главная
+					причина почему использование
+					<code>==</code>
+					повсеместно считается плохой практикой: оно приводит к трудностям в
+					отслеживании ошибок из-за сложных правил преобразования типов.
+				</p>
+
+				<p>Кроме того, приведение типов во время сравнения также влияет
+					на производительность; например, строка должна быть преобразована в
+					число перед сравнением с другим числом.</p>
+
+			</div>
+			<div>
+				<h3>Оператор строгого равенства</h3>
+
+				<p>
+					Оператор строгого равенства состоит из <strong>трёх</strong>
+					символов равенства:
+					<code>===</code>
+				</p>
+
+				<p>
+					В отличие от обычного оператора равенства, оператор строгого
+					равенства <strong>не</strong> выполняет приведение типов между
+					операндами.
+				</p>
+
+				<pre><code>""           ===   "0"           // false
+0            ===   ""            // false
+0            ===   "0"           // false
+false        ===   "false"       // false
+false        ===   "0"           // false
+false        ===   undefined     // false
+false        ===   null          // false
+null         ===   undefined     // false
+" \t\r\n"    ===   0             // false</code></pre>
+
+				<p>Результаты выше более понятны и позволяют быстрее выявлять
+					ошибки в коде. Это в определённой степени улучшает код, а также
+					дает прирост производительности в случае, если операнды имеют
+					различные типы.</p>
+
+			</div>
+			<div>
+				<h3>Сравнение объектов</h3>
+
+				<p>
+					Хотя оба оператора
+					<code>==</code>
+					и
+					<code>===</code>
+					заявлены как операторы равенства, они ведут себя по-разному, когда
+					хотя бы один из операндов является
+					<code>Object</code>
+					.
+				</p>
+
+				<pre><code>{} === {};                   // false
+new String('foo') === 'foo'; // false
+new Number(10) === 10;       // false
+var foo = {};
+foo === foo;                 // true</code></pre>
+
+				<p>
+					Здесь оба операнда сравниваются на <strong>идентичность</strong>, а
+					<strong>не</strong> равенство; то есть, будет проверяться, являются
+					ли операнды одним <strong>экземпляром</strong> объекта, так же как
+					делает
+					<code>is</code>
+					в Python и сравниваются указатели в С.
+				</p>
+
+			</div>
+			<div>
+				<h3>Заключение</h3>
+
+				<p>
+					Крайне рекомендуется использовать только операторы <strong>строгого
+						равенства</strong>. В случае, когда намечается преобразование типов, нужно
+					сделать <a href="#types.casting">явное
+						приведение</a> и не оставлять их на совести языковых хитростей с
+					преобразованиями.
+				</p>
+			</div>
+		</article>
+		<article id="types.typeof">
+			<h2>
+				Оператор
+				<code>typeof</code>
+			</h2>
+			<div>
+				<p>
+					Оператор
+					<code>typeof</code>
+					(вместе с <a href="#types.instanceof"><code>instanceof</code></a>)
+					— это, вероятно, самая большая недоделка в JavaScript, поскольку,
+					похоже, он <strong>поломан более чем полностью</strong>.
+				</p>
+
+				<p>
+					Хотя
+					<code>instanceof</code>
+					еще имеет ограниченное применение,
+					<code>typeof</code>
+					на самом деле имеет <em>только один</em> практический случай
+					применения, который при всём при этом <strong>не</strong> является
+					проверкой типа объекта.
+				</p>
+
+				<aside>
+					<p>
+						<strong>Замечаение:</strong> Хотя для вызова
+						<code>typeof</code>
+						также можно использовать синтаксис функции, т.е.
+						<code>typeof(obj)</code>
+						, на самом деле это не функция. Двойные круглые скобки будут
+						работать нормально и возвращаемое значение будет использоваться
+						как операнд оператора
+						<code>typeof</code>
+						. Но функции
+						<code>typeof</code>
+						— <strong>не существует</strong>.
+					</p>
+				</aside>
+
+			</div>
+			<div>
+				<h3>Таблица типов JavaScript</h3>
+
+				<pre><code>
+Значение            Класс      Тип
+-------------------------------------
+"foo"               String     string
+new String("foo")   String     object
+1.2                 Number     number
+new Number(1.2)     Number     object
+true                Boolean    boolean
+new Boolean(true)   Boolean    object
+new Date()          Date       object
+new Error()         Error      object
+[1,2,3]             Array      object
+new Array(1, 2, 3)  Array      object
+new Function("")    Function   function
+/abc/g              RegExp     object (function в Nitro/V8)
+new RegExp("meow")  RegExp     object (function в Nitro/V8)
+{}                  Object     object
+new Object()        Object     object</code></pre>
+
+				<p>
+					В таблице выше <em>Тип</em> представляет собой значение,
+					возвращаемое оператором
+					<code>typeof</code>
+					. Как хорошо видно, это значение может быть абсолютно любым, но не
+					логичным результатом.
+				</p>
+
+				<p>
+					<em>Класс</em> представляет собой значение внутреннего свойства
+					<code>[[Class]]</code>
+					объекта.
+				</p>
+
+				<aside>
+					<p>
+						<strong>Из спецификации:</strong> Значением
+						<code>[[Class]]</code>
+						может быть одна из следующих строк:
+						<code>Arguments</code>,
+						<code>Array</code>,
+						<code>Boolean</code>,
+						<code>Date</code>,
+						<code>Error</code>,
+						<code>Function</code>,
+						<code>JSON</code>,
+						<code>Math</code>,
+						<code>Number</code>,
+						<code>Object</code>,
+						<code>RegExp</code>,
+						<code>String</code>.
+					</p>
+				</aside>
+
+				<p>
+					Для того, чтобы получить значение <code>[[Class]]</code> необходимо вызвать метод <code>toString</code> у <code>Object.prototype</code>.
+				</p>
+
+			</div>
+			<div>
+				<h3>Класс объекта</h3>
+
+				<p>
+					Спецификация предоставляет только один способ доступа к значению
+					<code>[[Class]]</code> — используя <code>Object.prototype.toString</code>.
+				</p>
+
+				<pre><code>function is(type, obj) {
+    var clas = Object.prototype.toString.call(obj).slice(8, -1);
+    return obj !== undefined && obj !== null && clas === type;
+}
+
+is('String', 'test'); // true
+is('String', new String('test')); // true</code></pre>
+
+				<p>
+					В примере выше
+					<code>Object.prototype.toString</code>
+					вызывается со значением <code>this</code>,
+					являющимся объектом, значение
+					<code>[[Class]]</code>
+					которого нужно получить.
+				</p>
+
+				<aside class="es5">
+					<p>
+						<strong>ES5 Замечание:</strong> Для удобства в ECMAScript 5
+						возвращаемое значение <code>Object.prototype.toString</code> для <code>null</code> и
+						<code>undefined</code> было изменено с <code>Object</code> на
+						<code>Null</code> и <code>Undefined</code> соответственно.
+					</p>
+				</aside>
+
+			</div>
+			<div>
+				<h3>Проверка переменных на определённость</h3>
+
+				<pre><code>typeof foo !== 'undefined'</code></pre>
+
+				<p>
+					Выше проверяется, было ли
+					<code>foo</code>
+					действительно объявлено или нет; просто обращение к переменной
+					приведёт к <code>ReferenceError</code>. Это единственное, чем на самом деле полезен
+					<code>typeof</code>.
+				</p>
+
+			</div>
+			<div>
+				<h3>Заключение</h3>
+
+				<p>
+					Для проверки типа объекта настоятельно рекомендуется использовать
+					<code>Object.prototype.toString</code>
+					— это единственный надежный способ. Как показано выше в таблице
+					типов, некоторые возвращаемые
+					<code>typeof</code>
+					значения не определены в спецификации: таким образом, они могут
+					отличаться в различных реализациях.
+				</p>
+
+				<p>
+					Кроме случая проверки, была ли определена переменная,
+					<code>typeof</code>
+					следует избегать <strong>во что бы то ни стало</strong>.
+				</p>
+			</div>
+		</article>
+		<article id="types.instanceof">
+			<h2>
+				Оператор
+				<code>instanceof</code>
+			</h2>
+			<div>
+				<p>
+					Оператор
+					<code>instanceof</code>
+					сравнивает конструкторы двух операндов. Это полезно только когда
+					сравниваются пользовательские объекты. Использование на встроенных
+					типах почти так же бесполезно, как и <a href="#types.typeof">оператор typeof</a>.
+				</p>
+
+			</div>
+			<div>
+				<h3>Сравнение пользовательских объектов</h3>
+
+				<pre><code>function Foo() {}
+function Bar() {}
+Bar.prototype = new Foo();
+
+new Bar() instanceof Bar; // true
+new Bar() instanceof Foo; // true
+
+// Всего лишь присваиваем Bar.prototype объект функции Foo,
+// но не экземпляра Foo
+Bar.prototype = Foo;
+new Bar() instanceof Foo; // false</code></pre>
+
+			</div>
+			<div>
+				<h3>
+					Использование
+					<code>instanceof</code>
+					со встроенными типами
+				</h3>
+
+				<pre><code>
+new String('foo') instanceof String; // true
+new String('foo') instanceof Object; // true
+
+'foo' instanceof String; // false
+'foo' instanceof Object; // false</code></pre>
+
+				<p>
+					Здесь надо отметить одну важную вещь:
+					<code>instanceof</code>
+					не работает на объектах, которые происходят из разных контекстов
+					JavaScript (например, из различных документов в web-браузере), так
+					как их конструкторы и правда не будут конструкторами <em>тех
+						самых</em> объектов.
+				</p>
+
+			</div>
+			<div>
+				<h3>Заключение</h3>
+
+				<p>
+					Оператор
+					<code>instanceof</code>
+					должен использоваться <strong>только</strong> при обращении к
+					пользовательским объектам, происходящим из одного контекста
+					JavaScript. Так же, как и в случае оператора
+					<code>typeof</code>, любое другое использование необходимо <strong>избегать</strong>.
+				</p>
+			</div>
+		</article>
+		<article id="types.casting">
+			<h2>Приведение типов</h2>
+			<div>
+				<p>
+					JavaScript <em>слабо типизированный</em> язык, поэтому <em>преобразование
+					типов</em> будет применяться <strong>везде</strong>, где возможно.
+				</p>
+
+				<pre><code>// Эти равенства — истинны
+new Number(10) == 10; // Number.toString() преобразуется
+                      // обратно в число
+
+10 == '10';           // Strings преобразуется в Number
+10 == '+10 ';         // Ещё чуток строко-безумия
+10 == '010';          // и ещё
+isNaN(null) == false; // null преобразуется в 0,
+                      // который, конечно же, не NaN
+
+// Эти равенства — ложь
+10 == 010;
+10 == '-10';</code></pre>
+
+				<aside class="es5">
+					<p>
+						<strong>ES5 Замечание:</strong> Числовые литералы, которые
+						начинаются с 0 интерпретируются как восьмеричные (Base 8). В
+						ECMAScript 5 strict mode <strong>удалена</strong> поддержка
+						восьмеричной системы.
+					</p>
+				</aside>
+
+				<p>
+					Для того, чтобы избежать этого, <strong>настоятельно</strong>
+					рекомендуется использовать <a href="#types.equality">оператор
+					строгого равенства</a>. Впрочем, хотя это и позволяет избежать многих
+					распространенных ошибок, существует ещё много дополнительных
+					вопросов, которые возникают из-за слабости типизации JavaScript.
+				</p>
+
+			</div>
+			<div>
+				<h3>Конструкторы встроенных типов</h3>
+
+				<p>
+					Конструкторы встроенных типов, например,
+					<code>Number</code> и <code>String</code>
+					ведут себя различным образом, в зависимости от того вызываются они
+					с ключевым словом <code>new</code> или без.
+				</p>
+
+				<pre><code>new Number(10) === 10;     // False, Object и Number
+Number(10) === 10;         // True, Number и Number
+new Number(10) + 0 === 10; // True, из-за неявного преобразования</code></pre>
+
+				<p>
+					Использование встроенных типов, например
+					<code>Number</code>, с конструктором создаёт новый экземпляр объекта Number, но
+					использование без ключевого слова <code>new</code> создаст функцию <code>Number</code>, которая будет вести себя как конвертер.
+				</p>
+
+				<p>Кроме того, присутствие литералов или переменных, которые не
+					являются объектами приведет к еще большему насилию над типами.</p>
+
+				<p>
+					Лучший вариант — это <strong>явное</strong> приведение к одному из
+					трех возможных типов.
+				</p>
+
+			</div>
+			<div>
+				<h3>Приведение к строке</h3>
+
+				<pre><code>'' + 10 === '10'; // true</code></pre>
+
+				<p>
+					Путём добавления в начале пустой строки, значение легко
+					приводится к строке.
+				</p>
+
+			</div>
+			<div>
+				<h3>Приведение к числовому типу</h3>
+
+				<pre><code>+'10' === 10; // true</code></pre>
+
+				<p>
+					Используя <strong>унарный</strong> оператор плюс можно
+					преобразовать значение в число.
+				</p>
+
+			</div>
+			<div>
+				<h3>Приведение к булеву типу</h3>
+
+				<p>
+					Используя оператор <strong>not</strong> (<strong><code>!</code></strong>)
+					дважды, значение может быть приведено к логическому (булеву) типу.
+				</p>
+
+				<pre><code>!!'foo';   // true
+!!'';      // false
+!!'0';     // true
+!!'1';     // true
+!!'-1'     // true
+!!{};      // true
+!!true;    // true</code></pre>
+			</div>
+		</article>
+                            <article id="types.test">
+                <h2>Тест</h2>
+                <div>                            
+                    <p>
+                        Попробуйте пройти тест, чтобы проверить, насколько хорошо вы усвоили информацию, изложенную в данном разделе.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 5 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript" >
+                        var res = "13324";
+                    </script>
+
+                    <form name="test"><ol>
+                            <li><INPUT readonly="readonly" type="text" size="1" name="T1"/><strong>Имя переменной может состоять из:</strong><br/>
+                                <input type="radio" name="Q1"/> Букв, цифр и символов $, _<br />
+                                <input type="radio" name="Q1"/> Букв, цифр и символов $, %, &, !<br />
+                                <input type="radio" name="Q1"/> Букв и цифр<br />
+                                <input type="radio" name="Q1"/> Только букв<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T2"/><strong>Сколько существует примитивных типов данных?</strong><br/>
+                                <input type="radio" name="Q2"/> 3<br />
+                                <input type="radio" name="Q2"/> 4<br />
+                                <input type="radio" name="Q2"/> 5<br />
+                                <input type="radio" name="Q2"/> 7<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T3"/><strong>Какого типа данных нет в JavaScript?</strong><br/>
+                                <input type="radio" name="Q3"/> Number<br />
+                                <input type="radio" name="Q3"/> String<br />
+                                <input type="radio" name="Q3"/> Array<br />
+                                <input type="radio" name="Q3"/> Null<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T4"/><strong>Какое из сравнений вернет значение <code>true?</code></strong><br/>
+                                <input type="radio" name="Q4"/> “” == “0”<br />
+                                <input type="radio" name="Q4"/> 0 == “0”<br />
+                                <input type="radio" name="Q4"/> False = “false”<br />
+                                <input type="radio" name="Q4"/> False == null<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T5"/><strong>Для того, чтобы получить значение <code>[[Class]]</code> необходимо:</strong><br/>
+                                <input type="radio" name="Q5"/> Вызвать метод Class у Object<br />
+                                <input type="radio" name="Q5"/> Вызвать метод toString у Object<br />
+                                <input type="radio" name="Q5"/> Вызвать метод getClass у Object.prototype<br />
+                                <input type="radio" name="Q5"/> Вызвать метод toString у object.prototype<br />
+                                </li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                               
+                        </div>
+            </article>
+	</section>
+       	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2013
+		</p>
+	</footer>
+	<script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>

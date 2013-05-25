@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Циклы | var sity;</title>
+<meta charset="utf-8">
+<meta name="description" content="Руководство по основам JavaScript.">
+<link rel="stylesheet" href="style/varsity.css" media="all">
+<link rel="stylesheet" href="style/print.css" media="print">
+<!--[if lt IE 9]> <script src="javascript/html5.js"></script> <![endif]-->
+<link rel="icon" href="image/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+</head>
+<body>
+	
+	<!-- Mobile navigation-->
+	<nav id="nav_mobile">
+		<a id="nav_prev_section" style="">назад<span class="nav_section_name"></span></a>
+		<a id="nav_next_section" style="">далее<span class="nav_section_name"></span></a>
+		<a id="show_menu">показать меню</a>
+	</nav>   
+    <section id="loops">
+		<!-- Introduction-->
+		<header id="loops.intro">
+			<div id="logoloops" class="logo">
+				<a href="index.html"><img alt="Главная" src="image/Untitled-1a.png" title="Главная" height="150" /></a>
+			</div>
+			<h1>Циклы</h1>
+		</header>
+		<!-- Articles-->
+		<article id="loops.while">
+                            <div>
+                                <h2>Цикл <code>while</code></h2>
+				<p>
+					При написании скриптов зачастую встает задача сделать однотипное действие много раз.
+				</p>
+                                <p>
+                                        Например, вывести товары из списка один за другим. Или просто перебрать все числа от 1 до 10 и для 
+                                        каждого выполнить одинаковый код.   
+                                </p>
+                                <p>
+                                        Для многократного повторения одного участка кода — предусмотрены <em>циклы</em>.
+                                </p>
+                                <p>
+                                        Цикл <code>while</code> имеет вид:
+                                </p>
+                                <pre><code>while(условие) {
+  // код, тело цикла
+}</code></pre>
+                                <p>
+                                        Пока условие верно &#8212; выполняется <em>тело цикла</em><br/>
+                                        Например, цикл ниже выводит <code>i</code> пока <code>i &lt; 3</code>:
+                                </p>
+                                <pre><code>var i = 0;
+while (i &lt; 3) {
+  alert(i);
+  i++;
+}</code></pre>
+                                <p>
+                                        Повторение цикла по-научному называется &laquo;итерация&raquo;. Цикл в примере выше совершает 
+                                        три итерации.
+                                </p>
+                                <p>
+                                        Если бы <code>i++</code> в коде выше не было, то цикл выполнялся бы (в теории) вечно. На практике, браузер 
+                                        выведет сообщение о &laquo;зависшем&raquo; скрипте и посетитель его остановит.
+                                </p>
+                                <p>
+                                        <strong>Бесконечный цикл</strong> можно сделать и проще:
+                                </p>
+                                <pre><code>while(true) {
+  // ...
+}</code></pre>
+                        </div>
+            </article>
+            <article id="loops.dowhile">
+                        <div>
+                            <h2>Цикл <code>do..while</code></h2>
+                                <p>
+                                        Проверку условия можно поставить <em>под</em> телом цикла, используя специальный синтаксис 
+                                        <code>do..while</code>:
+                                </p>
+                                <pre><code>do {
+  // тело цикла
+} while(условие);</code></pre>
+                                <p>
+                                        Цикл, описанный, таким образом, сначала выполняет тело, а затем проверяет условие.
+                                </p>
+                                <p>
+                                        Например:
+                                </p>
+                                <pre><code>var i = 0;
+do {
+  alert(i);
+  i++;
+} while( i &lt; 3);</code></pre>
+                                <p>
+                                        Синтаксис <code>do..while</code> редко используется, т.к. обычный <code>while</code> нагляднее 
+                                        &#8212; в нём не приходится искать глазами условие и ломать голову, почему оно проверяется именно в конце.
+                                </p>
+                        </div>
+            </article>
+            <article id="loops.for">
+                	<div>
+                            <h2>Цикл <code>for</code></h2>
+                                <p>
+                                        Чаще всего применяется цикл <code>for</code>. Выглядит он так:
+                                </p>
+                                <pre><code>for (начало; условие; шаг) {
+ // ... тело цикла ...
+}</code></pre>
+                                <p>
+                                        Например, цикл выводит значения от 0 до 3 (не включая 3):
+                                </p>
+                                <pre><code>var i;
+
+for (i=0; i&lt;3; i++) {
+  alert(i);
+}</code></pre>
+                                <ul>
+                                        <li><em>Начало</em> <code>i=0</code> выполняется при заходе в цикл.</li>
+                                        <li><em>Условие</em> <code>i&lt;3</code> проверяется перед каждой итерацией.</li>
+                                        <li><em>Шаг</em> <code>i++</code> выполняется после каждой итерации, но перед проверкой условия.</li>
+                                </ul>
+                                <p>
+                                        В цикле также можно определить переменную:
+                                </p>
+                                <pre><code>for (var i=0; i&lt;3; i++) {
+  ... 
+}</code></pre>
+                                <p>
+                                        <strong>Любая часть <code>for</code> может быть пропущена.</strong>
+                                </p>
+                                <p>
+                                        Например, можно убрать <code>начало</code>:
+                                </p>
+                                <pre><code>var i = 0;
+for (; i&lt;3; i++) ...</code></pre>
+                                <p>
+                                        Можно убрать и шаг:
+                                </p>
+                                <pre><code>var i = 0;
+for (; i&lt;3; ) {
+ // цикл превратился в аналог while(i&lt;3)
+}</code></pre>
+                                <p>
+                                        А можно и вообще убрать все, получив бесконечный цикл:
+                                </p>
+                                <pre><code>for (;;) { 
+  // будет выполняться вечно 
+}</code></pre>
+                                <p>
+                                        При этом сами точки с запятой <code>;</code> обязательно должны присутствовать, иначе будет ошибка синтаксиса.
+                                </p>
+                                <aside>
+                                        <p>
+                                                <code>for..in</code>.
+                                        </p>
+                                        <p>
+                                                Существует также специальная конструкция <code>for..in</code> для перебора свойств объекта.
+                                        </p>
+                                </aside>
+                        </div>
+            </article>
+            <article id="loops.break">
+                        <div>
+                            <h2>Выход: <code>break</code></h2>
+                                <p>
+                                        Для более гибкого управления циклом используются директивы <code>break</code> и <code>continue</code>
+                                </p>
+                                <p>
+                                        Например, бесконечный цикл в примере прекратит выполнение при <code>i==5</code>:
+                                </p>
+                                <pre><code>var i=0;
+
+while(1) {
+  i++;   
+
+  if (i==5) break;
+
+  alert(i);
+}
+
+alert('Последняя i = '+ i ); // 5 (*)</code></pre>
+                                <p>
+                                        Выполнение продолжится со строки <code>(*)</code>, следующей за циклом.
+                                </p>
+                                 </div>
+            </article>
+            <article id="loops.continue">
+                        <div>
+                            <h2>Следующая итерация: <code>continue</code></h2>
+                                <p>
+                                        Директива <code>continue</code> прекращает выполнение <em>текущей итерации</em> цикла. Например, цикл 
+                                        ниже не выводит четные значения:
+                                </p>
+                                <pre><code>for (var i = 0; i &lt; 10; i++) {
+  
+  if (i % 2 == 0) continue;
+
+  alert(i);
+}</code></pre>
+                                <p>
+                                        Для четных <code>i</code> срабатывает <code>continue</code>, выполнение блока прекращается и управление передается 
+                                        на <code>for</code>.
+                                </p>
+                                <p>
+                                        <strong>Нельзя использовать break/continue справа от оператора &#8216;?&#8217;</strong>
+                                </p>
+                                <p>
+                                        Обычно мы можем заменить <code>if</code> на оператор вопросительный знак <code>'?'</code>.
+                                </p>
+                                <p>
+                                        То есть, запись:
+                                </p>
+                                <pre><code>if (условие) {
+  a();
+} else {
+  b();
+}</code></pre>
+                                <p>
+                                        ...аналогична записи:
+                                </p>
+                                <p>
+                                        <code>условие ? a() : b();</code>
+                                </p>
+                                <p>
+                                        В обоих случаях в зависимости от условия выполняется либо <code>a()</code> либо <code>b()</code>.
+                                </p>
+                                <p>
+                                        Но разница состоит в том, что оператор вопросительный знак <code>'?'</code>, использованный во второй записи, 
+                                        возвращает значение.
+                                </p>
+                                <p>
+                                        <strong>Синтаксические конструкции, которые не дают значения, нельзя использовать справа от <code>'?'</code>.</strong> 
+                                        К таким относятся большинство конструкций и, в частности, <code>break/continue</code>.
+                                </p>
+                                <p>
+                                        Поэтому такой код приведёт к ошибке:
+                                </p>
+                                <p>
+                                        <code>(i &gt; 5) ? alert(i) : continue;</code>
+                                </p>
+                                <p>
+                                        Так что нельзя сказать, что вопросительный знак может всегда заменить простой <code>if</code>.
+                                </p>
+                        </div>
+            </article>
+            <article id="loops.labels">
+                        <div>
+                            <h2>Метки</h2>
+                                <p>
+                                        Бывает нужно выйти одновременно из нескольких уровней цикла.
+                                </p>
+                                <p>
+                                        Например, надо ввести значения в точках с координатами, вот так:
+                                </p>
+                                <pre><code>for (var i = 0; i &lt; 3; i++) {
+
+  for (var j = 0; j &lt; 3; j++) {
+    
+    var input = prompt('Значение в координатах '+i+','+j, '');
+
+    if (input == null) break; // (*)
+
+  }
+}
+alert('Готово!');</code></pre>
+                                <p>
+                                        Обычный вызов <code>break</code> в строке <code>(*)</code> не может прервать два цикла сразу. 
+                                        Для этого существуют метки.
+                                </p>
+                                <p>
+                                        Метка имеет вид <code>"имя:"</code>, имя должно быть уникальным. Она ставится перед циклом, вот так:
+                                </p>
+                                <p>
+                                        <code>outer: for (var i = 0; i &lt; 3; i++) { ... }</code>
+                                </p>
+                                <p>
+                                        Можно также выносить ее на отдельную строку. Вызов <code>break outer</code> прерывает управление цикла с 
+                                        такой меткой, вот так:
+                                </p>
+                                <pre><code>outer:
+for (var i = 0; i &lt; 3; i++) {
+
+  for (var j = 0; j &lt; 3; j++) {
+    
+    var input = prompt('Значение в координатах '+i+','+j, '');
+
+    if (input == null) break outer; // (*)
+
+  }
+}
+alert('Готово!');</code></pre>
+                                <p>
+                                        Директива <code>continue</code> также может быть использована с меткой. Управление перепрыгнет на следующую 
+                                        итерацию цикла с меткой.
+                                </p>
+                                <p>
+                                        <strong>Метки можно ставить в том числе на блок, без цикла:</strong>
+                                </p>
+                                <pre><code>my: {
+
+  for (;;) {
+    for (i=0; i&lt;10; i++) {
+      if (i&gt;4) break my;
+    }
+  }
+  
+  some_code;
+
+}
+alert("После my"); // (*)</code></pre>
+                                <p>
+                                        В примере выше, <code>break</code> перепрыгнет через <code>some_code</code>, выполнение продолжится сразу после 
+                                        блока <code>my</code>, со строки <code>(*)</code>. Возможность ставить метку на блоке используется редко. 
+                                        Обычно метки ставятся перед циклом.
+                                </p>
+                                <aside>
+                                        <p>
+                                                <strong>Goto?</strong>
+                                        </p>
+                                        <p>
+                                                В некоторых языках программирования есть оператор <code>goto</code>, который может передавать управление на любой участок программы.
+                                        </p>
+                                        <p>     Операторы <code>break/continue</code> более ограниченны. Они работают только внутри циклов, и метка должна быть не где угодно, 
+                                                а выше по уровню вложенности.
+                                        </p>
+                                        <p>     В JavaScript нет <code>goto</code>.
+                                        </p>
+                                </aside>   
+                        </div>     
+            </article>
+                 <article id="loops.test">
+                <h2>Тест</h2>
+                <div>                            
+                    <p>
+                        Попробуйте пройти тест, чтобы проверить, насколько хорошо вы усвоили информацию, изложенную в данном разделе.
+                    </p>
+                    <ul>
+                        <li>Выберите один из вариантов в каждом из 5 вопросов</li>
+                        <li>Нажмите на кнопку "Показать результат"</li>
+                        <li>Скрипт не покажет результат, пока вы не ответите на все вопросы</li>
+                        <li>Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если вы ошиблись, там (-).</li>
+                        <li>Чтобы сбросить результат тестирования, нажмите кнопку "Сбросить ответы"</li>
+                    </ul>
+                    <br/>
+
+
+                    <script type="text/javascript" >
+                        var res = "34213";
+                    </script>
+
+                    <form name="test"><ol>
+                            <li><INPUT readonly="readonly" type="text" size="1" name="T1"/><strong> Какого цикла нет в JavaScript?</strong><br/>
+                                <input type="radio" name="Q1"/> Do…while<br />
+                                <input type="radio" name="Q1"/> While<br />
+                                <input type="radio" name="Q1"/> Until<br />
+                                <input type="radio" name="Q1"/> For<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T2"/><strong> Сколько раз выполнится цикл <code>var i = 0; while i < 4 {alert(i); i--;}</code></strong><br/>
+                                <input type="radio" name="Q2"/> 4<br />
+                                <input type="radio" name="Q2"/> 0<br />
+                                <input type="radio" name="Q2"/> 5<br />
+                                <input type="radio" name="Q2"/> Бесконечность<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T3"/><strong> С помощью какой директивы можно пропустить выполнение текущей итерации?</strong><br/>
+                                <input type="radio" name="Q3"/> Break<br />
+                                <input type="radio" name="Q3"/> Continue<br />
+                                <input type="radio" name="Q3"/> Reset<br />
+                                <input type="radio" name="Q3"/> Stop<br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T4"/><strong> Какое выражение верно?</strong><br/>
+                                <input type="radio" name="Q4"/> <code>for (i = 0; i <= 5; i++)</code><br />
+                                <input type="radio" name="Q4"/> <code>for (i <= 5; i++)</code><br />
+                                <input type="radio" name="Q4"/> <code>for (i = 0; i <= 5)</code><br />
+                                <input type="radio" name="Q4"/> <code>for i = 1 to 5</code><br />
+                                <br/></li><li><INPUT readonly="readonly" type="text" size="1" name="T5"/><strong> Какое действие заставит прерваться цикл <code>while(true)</code>?</strong><br/>
+                                <input type="radio" name="Q5"/> Присвоение любой переменной в цикле false<br />
+                                <input type="radio" name="Q5"/> Он никогда не прекратится<br />
+                                <input type="radio" name="Q5"/> Break<br />
+                                <input type="radio" name="Q5"/> Нельзя поставить циклу такое условие<br />
+                                </li></ol>		
+                        <P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me();" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 	 
+</form> 
+                               
+                        </div>
+            </article>
+        </section>
+           	<!-- Footer-->
+	<footer>
+		<p>
+			Студентка группы ВПС-09-3 <a href="mailto:cherchich@gmail.com">Мария
+				Дзюба</a>, ХНУРЭ, Харьков - 2013
+		</p>
+	</footer>
+    <script src="javascript/jquery.min.js"></script>
+	<script src="javascript/prettify.js"></script>
+	<script src="javascript/plugin.js"></script>
+	<script src="javascript/varsity.js"></script>
+</body>
+</html>
